@@ -10,6 +10,7 @@ import { PrismaModule } from "@core/modules/prisma.module";
 import { MinioModule } from "@core/modules/minio.module";
 import { AuthModule } from "@core/modules/auth.module";
 import { CqrsModule } from "@core/modules/cqrs.module";
+import { JwtModule } from "@core/modules/jwt.module";
 
 @Module({
 	imports: [
@@ -22,7 +23,8 @@ import { CqrsModule } from "@core/modules/cqrs.module";
 		PrismaModule,
 		MinioModule,
 		AuthModule,
-		CqrsModule
+		CqrsModule,
+		JwtModule
 	]
 })
 export class AppModule {}

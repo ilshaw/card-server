@@ -13,6 +13,7 @@
     "@nestjs/config": "^3.2.2",
     "@nestjs/core": "^10.3.9",
     "@nestjs/cqrs": "^10.2.7",
+    "@nestjs/jwt": "^10.2.0",
     "@nestjs/passport": "^10.0.3",
     "@nestjs/platform-fastify": "^10.3.9",
     "@prisma/client": "5.15.0",
@@ -20,6 +21,7 @@
     "joi": "^17.13.1",
     "minio": "^8.0.0",
     "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
@@ -27,6 +29,7 @@
     "@types/joi": "^17.2.3",
     "@types/minio": "^7.1.1",
     "@types/passport": "^1.0.16",
+    "@types/passport-jwt": "^4.0.1",
     "@types/passport-local": "^1.0.38",
     "@typescript-eslint/eslint-plugin": "^7.12.0",
     "@typescript-eslint/parser": "^7.12.0",
