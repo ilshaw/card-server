@@ -10,7 +10,17 @@ import { ConfigService } from "@core/services/config.service";
 	imports: [
     	NestConfigModule.forRoot({
 			validationSchema: joi.object({
-				PORT: joi.number().required()
+				JWT_REFRESH_ALGORITHM: joi.string().required(),
+				JWT_ACCESS_ALGORITHM: joi.string().required(),
+				JWT_REFRESH_EXPIRES: joi.number().required(),
+				JWT_ACCESS_EXPIRES: joi.number().required(),
+				MINIO_SECRET: joi.string().required(),
+				MINIO_ACCESS: joi.string().required(),
+				MINIO_HOST: joi.string().required(),
+				MINIO_PORT: joi.number().required(),
+				MINIO_SSL: joi.boolean().required(),
+				JWT_SECRET: joi.string().required(),
+				APP_PORT: joi.number().required(),
 			})
 		})
 	],

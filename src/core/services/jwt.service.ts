@@ -3,16 +3,26 @@ import { Injectable } from "@nestjs/common";
 
 import { RefreshPayloadInterface } from "@common/interfaces/refresh-payload.interface";
 import { AccessPayloadInterface } from "@common/interfaces/access-payload.interface";
+import { ConfigService } from "@core/services/config.service";
 
 @Injectable()
 export class JwtService {
-	constructor(private readonly nestJwtService: NestJwtService) {}
+	constructor(
+		private readonly nestJwtService: NestJwtService, 
+		private readonly configService: ConfigService
+	) {}
 
 	public async signRefresh(payload: RefreshPayloadInterface) {
-		return this.nestJwtService.signAsync(payload, { expiresIn: 365 * 24 * 60 * 60, algorithm: "RS256" });
+		return this.nestJwtService.signAsync(payload, { 
+			algorithm: this.configService.getJwtRefreshAlgorithm(),
+			expiresIn: this.configService.getJwtRefreshExpires()
+		});
 	}
 
 	public async signAccess(payload: AccessPayloadInterface) {
-		return this.nestJwtService.signAsync(payload, { expiresIn: 10 * 60, algorithm: "RS256" });
+		return this.nestJwtService.signAsync(payload, { 
+			algorithm: this.configService.getJwtAccessAlgorithm(),
+			expiresIn: this.configService.getJwtAccessExpires()
+		});
 	}
 }

@@ -9,7 +9,7 @@ async function bootstrap() {
 
 	const config = app.get(ConfigService);
 
-	await app.listen(config.getPort());
+	await app.listen(config.getAppPort());
 }
 
 bootstrap();
