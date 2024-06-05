@@ -16,11 +16,13 @@
     "@nestjs/passport": "^10.0.3",
     "@nestjs/platform-fastify": "^10.3.9",
     "@prisma/client": "5.15.0",
+    "bcrypt": "^5.1.1",
     "joi": "^17.13.1",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/joi": "^17.2.3",
     "@types/passport": "^1.0.16",
     "@types/passport-local": "^1.0.38",
