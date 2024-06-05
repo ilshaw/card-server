@@ -1,0 +1,22 @@
+generator Client {
+    provider = "prisma-client-js"
+}
+
+datasource Database {
+    provider = "postgresql"
+    url      = "postgresql://postgres:postgres@localhost:5432/auth-server?schema=public"
+}
+
+model User {
+    id            String   @map("id")         @default(uuid())
+	login         String   @map("login")
+    password      String   @map("password")
+	confirmed     Boolean  @map("confirmed")  @default(false)
+
+    created_at    DateTime @map("created_at") @default(now())
+    updated_at    DateTime @map("updated_at") @default(now())  @updatedAt
+
+    @@id([id])
+    @@map("users")
+	@@unique([login])
+}

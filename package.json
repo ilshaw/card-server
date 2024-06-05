@@ -1,19 +1,24 @@
 {
   "name": "auth-server",
   "scripts": {
+    "migrate:deploy": "prisma migrate deploy",
+    "migrate:dev": "prisma migrate dev",
+    "start:prod": "nest start",
     "start:dev": "nest start --watch",
-    "start": "nest start",
+    "generate": "prisma generate",
     "lint": "eslint ./src/**/*.ts --fix"
   },
   "dependencies": {
     "@nestjs/common": "^10.3.9",
     "@nestjs/core": "^10.3.9",
     "@nestjs/cqrs": "^10.2.7",
-    "@nestjs/platform-fastify": "^10.3.9"
+    "@nestjs/platform-fastify": "^10.3.9",
+    "@prisma/client": "5.15.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.12.0",
     "@typescript-eslint/parser": "^7.12.0",
+    "prisma": "^5.15.0",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.12.0"
   }
