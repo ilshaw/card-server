@@ -11,6 +11,7 @@ import { MinioModule } from "@core/modules/minio.module";
 import { AuthModule } from "@core/modules/auth.module";
 import { CqrsModule } from "@core/modules/cqrs.module";
 import { JwtModule } from "@core/modules/jwt.module";
+import { KeyModule } from "@core/modules/key.module";
 
 @Module({
 	imports: [
@@ -24,7 +25,8 @@ import { JwtModule } from "@core/modules/jwt.module";
 		MinioModule,
 		AuthModule,
 		CqrsModule,
-		JwtModule
+		JwtModule,
+		KeyModule
 	]
 })
 export class AppModule {}

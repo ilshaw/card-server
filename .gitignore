@@ -6,4 +6,8 @@ dist/**/*
 dist/**
 dist/*
 
+keys/**/*
+keys/**
+keys/*
+
 .env
