@@ -37,10 +37,6 @@ export class ConfigService {
 		return this.nestConfigService.get("MINIO_PORT");
 	}
 
-	public getJwtSecret() {
-		return this.nestConfigService.get("JWT_SECRET");
-	}
-
 	public getMinioSsl() {
 		return this.nestConfigService.get("MINIO_SSL");
 	}

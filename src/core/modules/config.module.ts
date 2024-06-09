@@ -19,7 +19,6 @@ import { ConfigService } from "@core/services/config.service";
 				MINIO_HOST: joi.string().required(),
 				MINIO_PORT: joi.number().required(),
 				MINIO_SSL: joi.boolean().required(),
-				JWT_SECRET: joi.string().required(),
 				APP_PORT: joi.number().required(),
 			})
 		})
