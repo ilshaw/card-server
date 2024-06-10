@@ -1,4 +1,5 @@
 import { UseInterceptors, UseFilters, Controller, UseGuards, Post, Request } from "@nestjs/common";
+import { ApiTags, ApiBody } from "@nestjs/swagger";
 import { CommandBus } from "@nestjs/cqrs";
 
 import { FastifyRequest } from "fastify";
@@ -9,12 +10,14 @@ import { ClientExceptionFilter } from "@core/filters/client-exception.filter";
 import { PostAuthSignupGuard } from "@core/guards/post-auth-signup.guard";
 import { PostAuthSignupDto } from "@common/dtos/post-auth-signup.dto";
 
+@ApiTags("Auth")
 @UseInterceptors(ClientResponseInterceptor)
 @UseFilters(ClientExceptionFilter)
 @Controller("/auth")
 export class AuthController {
 	constructor(private readonly commandBus: CommandBus) {}
 
+	@ApiBody({ type: PostAuthSignupDto, required: true })
 	@UseGuards(PostAuthSignupGuard)
 	@Post("/signup")
 	public async postAuthSignup(@Request() request: FastifyRequest<{ Body: PostAuthSignupDto }>) {
