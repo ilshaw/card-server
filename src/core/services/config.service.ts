@@ -37,6 +37,18 @@ export class ConfigService {
 		return this.nestConfigService.get("MINIO_PORT");
 	}
 
+	public getRedisPort() {
+		return this.nestConfigService.get("REDIS_PORT");
+	}
+
+	public getRedisHost() {
+		return this.nestConfigService.get("REDIS_HOST");
+	}
+
+	public getRedisPass() {
+		return this.nestConfigService.get("REDIS_PASS");
+	}
+
 	public getMinioSsl() {
 		return this.nestConfigService.get("MINIO_SSL");
 	}

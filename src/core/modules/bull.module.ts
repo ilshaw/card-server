@@ -5,16 +5,22 @@ import { SessionProcessor } from "@core/processors/session.processor";
 import { UserProcessor } from "@core/processors/user.processor";
 import { SessionQueue } from "@core/queues/session.queue";
 import { UserQueue } from "@core/queues/user.queue";
+import { ConfigService } from "@core/services/config.service";
 
 @Global()
 @Module({
 	imports: [
-    	NestBullModule.forRoot({
-			redis: {
-				password: "redis",
-				host: "localhost",
-        		port: 6379,
-			}
+    	NestBullModule.forRootAsync({
+			useFactory: (configService: ConfigService) => ({
+				redis: {
+					password: configService.getRedisPass(),
+					host: configService.getRedisHost(),
+					port: configService.getRedisPort()
+				}
+			}),
+			inject: [
+				ConfigService
+			]
 		}),
 		NestBullModule.registerQueue({
 			name: "session",

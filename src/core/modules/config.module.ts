@@ -16,10 +16,13 @@ import { ConfigService } from "@core/services/config.service";
 				JWT_ACCESS_EXPIRES: joi.number().required(),
 				MINIO_SECRET: joi.string().required(),
 				MINIO_ACCESS: joi.string().required(),
+				REDIS_PORT: joi.number().required(),
+				REDIS_HOST: joi.string().required(),
+				REDIS_PASS: joi.string().required(),
 				MINIO_HOST: joi.string().required(),
 				MINIO_PORT: joi.number().required(),
 				MINIO_SSL: joi.boolean().required(),
-				APP_PORT: joi.number().required(),
+				APP_PORT: joi.number().required()
 			})
 		})
 	],
