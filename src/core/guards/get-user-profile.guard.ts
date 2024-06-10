@@ -7,21 +7,26 @@ import { ExceptionService } from "@core/services/exception.service";
 import { UserEntity } from "@common/entities/user.entity";
 
 @Injectable()
-export class PostAuthSignupGuard extends AuthGuard("post-auth-signup") implements CanActivate {
+export class GetUserProfileGuard extends AuthGuard("get-user-profile") implements CanActivate {
 	constructor(private readonly exceptionService: ExceptionService) {
 		super();
 	}
 
-	public handleRequest<T extends UserEntity>(error: unknown, user: T) {
+	public handleRequest<T extends UserEntity>(error: unknown, user: T, info: unknown) {
 		if(error) {
 			throw error;
 		}
 		else {
-			if(user) {
-				throw this.exceptionService.conflictException("Login is already taken");
+			if(info) {
+				throw this.exceptionService.unauthorizedException("Invalid access token was provided");
 			}
 			else {
-				return lodash.omit(user, "password");
+				if(user) {
+					return lodash.omit(user, "password");
+				}
+				else {
+					throw this.exceptionService.notFoundException("User was not found");
+				}
 			}
 		}
 	}

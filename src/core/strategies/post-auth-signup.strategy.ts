@@ -25,7 +25,7 @@ export class PostAuthSignupStrategy extends PassportStrategy(Strategy, "post-aut
 			throw this.exceptionService.conflictException("Login is already taken");
 		}
 		else {
-			return null;
+			return user;
 		}
 	}
 }
