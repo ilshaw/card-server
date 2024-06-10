@@ -4,8 +4,9 @@ import { RepositoryModule } from "@core/modules/repository.module";
 import { ExceptionModule } from "@core/modules/exception.module";
 import { ResponseModule } from "@core/modules/response.module";
 import { StrategyModule } from "@core/modules/strategy.module";
-import { ConfigModule } from "@core/modules/config.module";
 import { BcryptModule } from "@core/modules/bcrypt.module";
+import { ConfigModule } from "@core/modules/config.module";
+import { CookieModule } from "@core/modules/cookie.module";
 import { PrismaModule } from "@core/modules/prisma.module";
 import { MinioModule } from "@core/modules/minio.module";
 import { AuthModule } from "@core/modules/auth.module";
@@ -20,8 +21,9 @@ import { KeyModule } from "@core/modules/key.module";
 		ExceptionModule,
 		ResponseModule,
 		StrategyModule,
-		ConfigModule,
 		BcryptModule,
+		ConfigModule,
+		CookieModule,
 		PrismaModule,
 		MinioModule,
 		AuthModule,

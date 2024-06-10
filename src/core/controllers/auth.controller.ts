@@ -1,8 +1,8 @@
-import { UseInterceptors, UseFilters, Controller, UseGuards, HttpCode, Post, Request } from "@nestjs/common";
+import { UseInterceptors, UseFilters, Controller, UseGuards, HttpCode, Post, Request, Response } from "@nestjs/common";
 import { ApiTags, ApiBody, ApiCreatedResponse, ApiConflictResponse } from "@nestjs/swagger";
 import { CommandBus } from "@nestjs/cqrs";
 
-import { FastifyRequest } from "fastify";
+import { FastifyRequest, FastifyReply } from "fastify";
 
 import { ClientResponseInterceptor } from "@core/interceptors/client-response.interceptor";
 import { PostAuthSignupCommand } from "@common/commands/post-auth-signup.command";
@@ -24,7 +24,7 @@ export class AuthController {
 	@UseGuards(PostAuthSignupGuard)
 	@HttpCode(ResponseStatusEnum.CREATED)
 	@Post("/signup")
-	public async postAuthSignup(@Request() request: FastifyRequest<{ Body: PostAuthSignupDto }>) {
-		return await this.commandBus.execute(new PostAuthSignupCommand(request));
+	public async postAuthSignup(@Request() request: FastifyRequest<{ Body: PostAuthSignupDto }>, @Response({ passthrough: true }) response: FastifyReply) {
+		return await this.commandBus.execute(new PostAuthSignupCommand(request, response));
 	}
 }

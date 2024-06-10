@@ -2,11 +2,15 @@ import { FastifyAdapter, NestFastifyApplication } from "@nestjs/platform-fastify
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import { NestFactory } from "@nestjs/core";
 
+import cookie from "@fastify/cookie";
+
 import { ConfigService } from "@core/services/config.service";
 import { AppModule } from "@core/modules/app.module";
 
 async function bootstrap() {
 	const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
+
+	app.register(cookie);
 
 	const config = app.get(ConfigService);
 
