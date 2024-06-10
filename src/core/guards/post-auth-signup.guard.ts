@@ -2,6 +2,7 @@ import { Injectable, CanActivate, ExecutionContext } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 
 import { ExceptionService } from "@core/services/exception.service";
+import { UserEntity } from "@common/entities/user.entity";
 
 @Injectable()
 export class PostAuthSignupGuard extends AuthGuard("post-auth-signup") implements CanActivate {
@@ -9,7 +10,7 @@ export class PostAuthSignupGuard extends AuthGuard("post-auth-signup") implement
 		super();
 	}
 
-	public handleRequest<T = unknown>(error: unknown, user: T) {
+	public handleRequest<T extends UserEntity>(error: unknown, user: T) {
 		if(error) {
 			throw error;
 		}
