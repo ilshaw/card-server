@@ -8,13 +8,13 @@ datasource Database {
 }
 
 model User {
-    id            String   @map("id")         @default(uuid())
-	login         String   @map("login")
-    password      String   @map("password")
-	confirmed     Boolean  @map("confirmed")  @default(false)
+    id         String   @map("id")         @default(uuid())
+	login      String   @map("login")
+    password   String   @map("password")
+	confirmed  Boolean  @map("confirmed")  @default(false)
 
-    created_at    DateTime @map("created_at") @default(now())
-    updated_at    DateTime @map("updated_at") @default(now())  @updatedAt
+    created_at DateTime @map("created_at") @default(now())
+    updated_at DateTime @map("updated_at") @default(now())  @updatedAt
 
     @@id([id])
     @@map("users")
