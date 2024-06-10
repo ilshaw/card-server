@@ -2,6 +2,8 @@ import { CqrsModule as NestCqrsModule } from "@nestjs/cqrs";
 import { Global, Module } from "@nestjs/common";
 
 import { PostAuthSignupHandler } from "@core/commands/post-auth-signup.handler";
+import { SessionCreatedHandler } from "@core/events/session-created.handler";
+import { UserCreatedHandler } from "@core/events/user-created.handler";
 
 @Global()
 @Module({
@@ -9,7 +11,9 @@ import { PostAuthSignupHandler } from "@core/commands/post-auth-signup.handler";
     	NestCqrsModule.forRoot()
 	],
 	providers: [
-		PostAuthSignupHandler
+		PostAuthSignupHandler,
+		SessionCreatedHandler,
+		UserCreatedHandler
 	]
 })
 export class CqrsModule {}
