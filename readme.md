@@ -12,7 +12,7 @@ $ bun install
 
 ```bash
 # production
-$ bun run start
+$ bun run start:prod
 
 # development
 $ bun run start:dev
