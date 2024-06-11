@@ -7,7 +7,7 @@ import { UserEntity } from "@common/entities/user.entity";
 export class SessionRepository {
     constructor(private readonly prismaService: PrismaService) {}
 
-    public async createByUserAndAccessAndRefresh(user: UserEntity, access: string, refresh: string) {
+    public async createByUserAndAccessAndRefresh(user: Omit<UserEntity, "password">, access: string, refresh: string) {
         return await this.prismaService.session.create({
             data: {
                 user: {
@@ -19,7 +19,7 @@ export class SessionRepository {
         });
     }
 
-    public async findUniqueByUserAndRefresh(user: UserEntity, refresh: string) {
+    public async findUniqueByUserAndRefresh(user: Omit<UserEntity, "password">, refresh: string) {
         return await this.prismaService.session.findUnique({
             where: {
                 user_id_refresh: {
@@ -30,7 +30,7 @@ export class SessionRepository {
         });
     }
 
-    public async findUniqueByUserAndAccess(user: UserEntity, access: string) {
+    public async findUniqueByUserAndAccess(user: Omit<UserEntity, "password">, access: string) {
         return await this.prismaService.session.findUnique({ 
             where: {
                 user_id_access: {
