@@ -7,6 +7,15 @@ import { ClientResponseClass } from "@common/classes/client-response.class";
 @Injectable()
 export class ClientResponseInterceptor implements NestInterceptor {
     public intercept(context: ExecutionContext, next: CallHandler) {
-        return next.handle().pipe(rxjs.map((data) => data instanceof ClientResponseClass ? data.getResponse() : data));
+        const operator = rxjs.map((data) => {
+            if(data instanceof ClientResponseClass) {
+                return data.getResponse();
+            }
+            else {
+                return data;
+            }
+        });
+
+        return next.handle().pipe(operator);
     }
 }

@@ -10,15 +10,15 @@ export class PinoService implements LoggerService {
         }
     });
 
-    public error(message: string) {
+    public error(message: unknown) {
         return this.pino.error(message);
     }
 
-    public warn(message: string) {
+    public warn(message: unknown) {
         return this.pino.warn(message);
     }
 
-    public log(message: string) {
+    public log(message: unknown) {
         return this.pino.info(message);
     }
 }

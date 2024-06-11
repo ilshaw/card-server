@@ -10,6 +10,6 @@ export class UserProcessor {
 
     @Process("created")
     public async processCreated(job: Job<UserCreatedJob>) {
-        return console.log(job.data);
+
     }
 }
