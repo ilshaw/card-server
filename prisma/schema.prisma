@@ -8,15 +8,15 @@ datasource Database {
 }
 
 model User {
-    id         String   @map("id")         @default(uuid())
-	login      String   @map("login")
-    password   String   @map("password")
-	confirmed  Boolean  @map("confirmed")  @default(false)
+    id        String   @map("id")        @default(uuid())
+	login     String   @map("login")
+    password  String   @map("password")
+	confirmed Boolean  @map("confirmed") @default(false)
 
-	sessions   Session[]
+	sessions  Session[]
 
-    created_at DateTime @map("created_at") @default(now())
-    updated_at DateTime @map("updated_at") @default(now())  @updatedAt
+    created   DateTime @map("created")   @default(now())
+    updated   DateTime @map("updated")   @default(now())  @updatedAt
 
     @@id([id])
     @@map("users")
@@ -24,15 +24,15 @@ model User {
 }
 
 model Session {
-	id         String   @map("id")         @default(uuid())
-	access     String   @map("access") 
-	refresh    String   @map("refresh")
-	user_id    String   @map("user_id")
+	id      String   @map("id")      @default(uuid())
+	access  String   @map("access") 
+	refresh String   @map("refresh")
+	user_id String   @map("user_id")
 
-	user       User                                         @relation(fields: [user_id], references: [id])
+	user    User                                      @relation(fields: [user_id], references: [id])
 
-	created_at DateTime @map("created_at") @default(now())
-    updated_at DateTime @map("updated_at") @default(now())  @updatedAt
+	created DateTime @map("created") @default(now())
+    updated DateTime @map("updated") @default(now())  @updatedAt
 
 	@@id([id])
     @@map("sessions")
