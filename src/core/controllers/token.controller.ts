@@ -1,5 +1,5 @@
 import { Controller, UseGuards, HttpCode, Get, Request } from "@nestjs/common";
-import { ApiTags, ApiOkResponse } from "@nestjs/swagger";
+import { ApiTags, ApiCookieAuth, ApiOkResponse } from "@nestjs/swagger";
 import { QueryBus } from "@nestjs/cqrs";
 
 import { FastifyReply } from "fastify";
@@ -16,6 +16,7 @@ export class TokenController {
     constructor(private readonly queryBus: QueryBus) {}
 
     @ApiOkResponse({ description: "Tokens has successfully refreshed" })
+    @ApiCookieAuth("refresh")
     @UseGuards(GetTokenRefreshGuard)
     @HttpCode(ResponseStatusEnum.OK)
     @Get("/refresh")

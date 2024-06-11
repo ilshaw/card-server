@@ -1,5 +1,5 @@
 import { Controller, UseGuards, HttpCode, Get, Request } from "@nestjs/common";
-import { ApiTags, ApiOkResponse } from "@nestjs/swagger";
+import { ApiTags, ApiCookieAuth, ApiOkResponse } from "@nestjs/swagger";
 import { QueryBus } from "@nestjs/cqrs";
 
 import { GetUserProfileQuery } from "@common/queries/get-user-profile.query";
@@ -13,6 +13,7 @@ export class UserController {
     constructor(private readonly queryBus: QueryBus) {}
 
     @ApiOkResponse({ description: "Information about user profile" })
+    @ApiCookieAuth("access")
     @UseGuards(GetUserProfileGuard)
     @HttpCode(ResponseStatusEnum.OK)
     @Get("/profile")
