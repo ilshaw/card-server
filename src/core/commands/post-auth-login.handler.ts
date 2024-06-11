@@ -14,7 +14,7 @@ export class PostAuthLoginHandler {
         private readonly responseService: ResponseService,
         private readonly cookieService: CookieService,
         private readonly jwtService: JwtService,
-        private readonly eventBus: EventBus,
+        private readonly eventBus: EventBus
     ) {}
 
     public async execute(command: PostAuthLoginCommand) {

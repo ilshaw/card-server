@@ -14,6 +14,7 @@ import { ConfigModule } from "@core/modules/config.module";
 import { CookieModule } from "@core/modules/cookie.module";
 import { PrismaModule } from "@core/modules/prisma.module";
 import { MinioModule } from "@core/modules/minio.module";
+import { TokenModule } from "@core/modules/token.module";
 import { AuthModule } from "@core/modules/auth.module";
 import { BullModule } from "@core/modules/bull.module";
 import { CqrsModule } from "@core/modules/cqrs.module";
@@ -33,6 +34,7 @@ import { KeyModule } from "@core/modules/key.module";
         CookieModule,
         PrismaModule,
         MinioModule,
+        TokenModule,
         AuthModule,
         BullModule,
         CqrsModule,
