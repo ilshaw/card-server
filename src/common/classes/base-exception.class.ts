@@ -1,9 +1,9 @@
 import { BaseExceptionInterface } from "@common/interfaces/base-exception.interface";
 import { ExceptionStatusEnum } from "@common/enums/exception-status.enum";
 
-export class BaseExceptionClass {
+export class BaseExceptionClass<R extends BaseExceptionInterface = BaseExceptionInterface> {
     constructor(
-        private readonly response: BaseExceptionInterface, 
+        private readonly response: R, 
         private readonly status: ExceptionStatusEnum
     ) {}
 

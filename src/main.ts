@@ -9,7 +9,9 @@ import { PinoService } from "@core/services/pino.service";
 import { AppModule } from "@core/modules/app.module";
 
 async function bootstrap() {
-    const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter(), { bufferLogs: true });
+    const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter(), { 
+        bufferLogs: true 
+    });
 
     const logger = app.get(PinoService);
 

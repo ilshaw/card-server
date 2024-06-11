@@ -9,7 +9,7 @@ import { KeyService } from "@core/services/key.service";
     imports: [
         NestJwtModule.registerAsync({
             useFactory: (keyService: KeyService) => ({ 
-                privateKey: keyService.getPrivate() 
+                privateKey: keyService.readPrivate() 
             }),
             inject: [
                 KeyService

@@ -2,7 +2,7 @@ import { ClientExceptionInterface } from "@common/interfaces/client-exception.in
 import { ExceptionStatusEnum } from "@common/enums/exception-status.enum";
 import { BaseExceptionClass } from "@common/classes/base-exception.class";
 
-export class ClientExceptionClass extends BaseExceptionClass {
+export class ClientExceptionClass extends BaseExceptionClass<ClientExceptionInterface> {
     constructor(response: ClientExceptionInterface, status: ExceptionStatusEnum) {
         super(response, status);
     }

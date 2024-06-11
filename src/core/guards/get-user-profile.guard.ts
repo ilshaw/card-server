@@ -12,7 +12,7 @@ export class GetUserProfileGuard extends AuthGuard("get-user-profile") implement
         super();
     }
 
-    public handleRequest<T extends UserEntity>(error: unknown, user: T, info: unknown) {
+    public handleRequest<U extends UserEntity = UserEntity>(error: unknown, user: U, info: unknown) {
         if(error) {
             throw error;
         }

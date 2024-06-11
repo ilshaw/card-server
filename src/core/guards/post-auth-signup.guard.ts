@@ -12,7 +12,7 @@ export class PostAuthSignupGuard extends AuthGuard("post-auth-signup") implement
         super();
     }
 
-    public handleRequest<T extends UserEntity>(error: unknown, user: T) {
+    public handleRequest<U extends UserEntity = UserEntity>(error: unknown, user: U) {
         if(error) {
             throw error;
         }

@@ -21,7 +21,7 @@ export class GetUserProfileStrategy extends PassportStrategy(Strategy, "get-user
         super({
             passReqToCallback: true,
             jwtFromRequest: ExtractJwt.fromExtractors([(request: FastifyRequest) => request.cookies.access]),
-            secretOrKey: keyService.getPublic()
+            secretOrKey: keyService.readPublic()
         });
     }
 

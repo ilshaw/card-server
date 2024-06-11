@@ -5,11 +5,11 @@ import * as fs from "fs";
 
 @Injectable()
 export class KeyService {
-    public getPrivate() {
+    public readPrivate() {
         return fs.readFileSync(path.resolve(process.cwd(), "keys", "private.key"));
     }
 
-    public getPublic() {
+    public readPublic() {
         return fs.readFileSync(path.resolve(process.cwd(), "keys", "public.key"));
     }
 }
