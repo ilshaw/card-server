@@ -14,12 +14,12 @@ import { UserRequest } from "@common/interfaces/user-request.interface";
 @UseFilters(ClientExceptionFilter)
 @Controller("/user")
 export class UserController {
-	constructor(private readonly queryBus: QueryBus) {}
+    constructor(private readonly queryBus: QueryBus) {}
 
-	@UseGuards(GetUserProfileGuard)
-	@HttpCode(ResponseStatusEnum.OK)
-	@Get("/profile")
-	public async getUserProfile(@Request() request: UserRequest) {
-		return await this.queryBus.execute(new GetUserProfileQuery(request));
-	}
+    @UseGuards(GetUserProfileGuard)
+    @HttpCode(ResponseStatusEnum.OK)
+    @Get("/profile")
+    public async getUserProfile(@Request() request: UserRequest) {
+        return await this.queryBus.execute(new GetUserProfileQuery(request));
+    }
 }

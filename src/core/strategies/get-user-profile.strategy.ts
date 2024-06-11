@@ -12,34 +12,34 @@ import { KeyService } from "@core/services/key.service";
 
 @Injectable()
 export class GetUserProfileStrategy extends PassportStrategy(Strategy, "get-user-profile") {
-	constructor(
-		private readonly sessionRepository: SessionRepository,
-		private readonly exceptionService: ExceptionService, 
-		private readonly userRepository: UserRepository,
-		private readonly keyService: KeyService
-	) {
-		super({
-			passReqToCallback: true,
-			jwtFromRequest: ExtractJwt.fromExtractors([(request: FastifyRequest) => request.cookies.access]),
-			secretOrKey: keyService.getPublic()
-		});
-	}
+    constructor(
+        private readonly sessionRepository: SessionRepository,
+        private readonly exceptionService: ExceptionService, 
+        private readonly userRepository: UserRepository,
+        private readonly keyService: KeyService
+    ) {
+        super({
+            passReqToCallback: true,
+            jwtFromRequest: ExtractJwt.fromExtractors([(request: FastifyRequest) => request.cookies.access]),
+            secretOrKey: keyService.getPublic()
+        });
+    }
 
-	public async validate(request: FastifyRequest, payload: AccessPayloadInterface) {
-		const user = await this.userRepository.findUniqueById(payload.id);
+    public async validate(request: FastifyRequest, payload: AccessPayloadInterface) {
+        const user = await this.userRepository.findUniqueById(payload.id);
 
-		if(user) {
-			const session = await this.sessionRepository.findUniqueByUserAndAccess(user, request.cookies.access);
+        if(user) {
+            const session = await this.sessionRepository.findUniqueByUserAndAccess(user, request.cookies.access);
 
-			if(session) {
-				return user;
-			}
-			else {
-				throw this.exceptionService.notFoundException("Session was not found");
-			}
-		}
-		else {
-			throw this.exceptionService.notFoundException("User was not found");
-		}
-	}
+            if(session) {
+                return user;
+            }
+            else {
+                throw this.exceptionService.notFoundException("Session was not found");
+            }
+        }
+        else {
+            throw this.exceptionService.notFoundException("User was not found");
+        }
+    }
 }

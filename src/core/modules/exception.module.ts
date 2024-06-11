@@ -4,11 +4,11 @@ import { ExceptionService } from "@core/services/exception.service";
 
 @Global()
 @Module({
-	providers: [
-		ExceptionService
-	],
-	exports: [
-		ExceptionService
-	]
+    providers: [
+        ExceptionService
+    ],
+    exports: [
+        ExceptionService
+    ]
 })
 export class ExceptionModule {}

@@ -6,10 +6,10 @@ import { UserCreatedJob } from "@common/jobs/user-created.job";
 
 @Processor("user")
 export class UserProcessor {
-	constructor() {}
+    constructor() {}
 
-	@Process("created")
-	public async processCreated(job: Job<UserCreatedJob>) {
-		return console.log(job.data);
-	}
+    @Process("created")
+    public async processCreated(job: Job<UserCreatedJob>) {
+        return console.log(job.data);
+    }
 }

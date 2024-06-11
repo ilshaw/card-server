@@ -7,10 +7,10 @@ import { SessionCreatedJob } from "@common/jobs/session-created.job";
 
 @Processor("session")
 export class SessionProcessor {
-	constructor(private readonly sessionRepository: SessionRepository) {}
+    constructor(private readonly sessionRepository: SessionRepository) {}
 
-	@Process("created")
-	public async processCreated(job: Job<SessionCreatedJob>) {
-		return await this.sessionRepository.createByUserAndAccessAndRefresh(job.data.user, job.data.access, job.data.refresh);
-	}
+    @Process("created")
+    public async processCreated(job: Job<SessionCreatedJob>) {
+        return await this.sessionRepository.createByUserAndAccessAndRefresh(job.data.user, job.data.access, job.data.refresh);
+    }
 }

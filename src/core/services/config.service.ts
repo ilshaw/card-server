@@ -3,57 +3,57 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class ConfigService {
-	constructor(private readonly nestConfigService: NestConfigService) {}
+    constructor(private readonly nestConfigService: NestConfigService) {}
 
-	public getJwtRefreshAlgorithm() {
-		return this.nestConfigService.get("JWT_REFRESH_ALGORITHM");
-	}
+    public getJwtRefreshAlgorithm() {
+        return this.nestConfigService.get("JWT_REFRESH_ALGORITHM");
+    }
 
-	public getJwtAccessAlgorithm() {
-		return this.nestConfigService.get("JWT_ACCESS_ALGORITHM");
-	}
+    public getJwtAccessAlgorithm() {
+        return this.nestConfigService.get("JWT_ACCESS_ALGORITHM");
+    }
 
-	public getJwtRefreshExpires() {
-		return this.nestConfigService.get("JWT_REFRESH_EXPIRES");
-	}
+    public getJwtRefreshExpires() {
+        return this.nestConfigService.get("JWT_REFRESH_EXPIRES");
+    }
 
-	public getJwtAccessExpires() {
-		return this.nestConfigService.get("JWT_ACCESS_EXPIRES");
-	}
+    public getJwtAccessExpires() {
+        return this.nestConfigService.get("JWT_ACCESS_EXPIRES");
+    }
 
-	public getMinioSecret() {
-		return this.nestConfigService.get("MINIO_SECRET");
-	}
+    public getMinioSecret() {
+        return this.nestConfigService.get("MINIO_SECRET");
+    }
 
-	public getMinioAccess() {
-		return this.nestConfigService.get("MINIO_ACCESS");
-	}
+    public getMinioAccess() {
+        return this.nestConfigService.get("MINIO_ACCESS");
+    }
 
-	public getMinioHost() {
-		return this.nestConfigService.get("MINIO_HOST");
-	}
+    public getMinioHost() {
+        return this.nestConfigService.get("MINIO_HOST");
+    }
 
-	public getMinioPort() {
-		return this.nestConfigService.get("MINIO_PORT");
-	}
+    public getMinioPort() {
+        return this.nestConfigService.get("MINIO_PORT");
+    }
 
-	public getRedisPort() {
-		return this.nestConfigService.get("REDIS_PORT");
-	}
+    public getRedisPort() {
+        return this.nestConfigService.get("REDIS_PORT");
+    }
 
-	public getRedisHost() {
-		return this.nestConfigService.get("REDIS_HOST");
-	}
+    public getRedisHost() {
+        return this.nestConfigService.get("REDIS_HOST");
+    }
 
-	public getRedisPass() {
-		return this.nestConfigService.get("REDIS_PASS");
-	}
+    public getRedisPass() {
+        return this.nestConfigService.get("REDIS_PASS");
+    }
 
-	public getMinioSsl() {
-		return this.nestConfigService.get("MINIO_SSL");
-	}
+    public getMinioSsl() {
+        return this.nestConfigService.get("MINIO_SSL");
+    }
 
-	public getAppPort() {
-		return this.nestConfigService.get("APP_PORT");
-	}
+    public getAppPort() {
+        return this.nestConfigService.get("APP_PORT");
+    }
 }

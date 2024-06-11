@@ -4,11 +4,11 @@ import { BcryptService } from "@core/services/bcrypt.service";
 
 @Global()
 @Module({
-	providers: [
-		BcryptService
-	],
-	exports: [
-		BcryptService
-	]
+    providers: [
+        BcryptService
+    ],
+    exports: [
+        BcryptService
+    ]
 })
 export class BcryptModule {}

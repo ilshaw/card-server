@@ -17,15 +17,15 @@ import { ResponseStatusEnum } from "@common/enums/response-status.enum";
 @UseFilters(ClientExceptionFilter)
 @Controller("/auth")
 export class AuthController {
-	constructor(private readonly commandBus: CommandBus) {}
+    constructor(private readonly commandBus: CommandBus) {}
 
-	@ApiConflictResponse({ description: "Login is already taken" })
-	@ApiCreatedResponse({ description: "User has successfully signed up" })
-	@ApiBody({ type: PostAuthSignupBodyDto, required: true, description: "Post auth signup body" })
-	@UseGuards(PostAuthSignupGuard)
-	@HttpCode(ResponseStatusEnum.CREATED)
-	@Post("/signup")
-	public async postAuthSignup(@Request() request: FastifyRequest<{ Body: PostAuthSignupBodyDto }>, @ResponseDecorator() response: FastifyReply) {
-		return await this.commandBus.execute(new PostAuthSignupCommand(request, response));
-	}
+    @ApiConflictResponse({ description: "Login is already taken" })
+    @ApiCreatedResponse({ description: "User has successfully signed up" })
+    @ApiBody({ type: PostAuthSignupBodyDto, required: true, description: "Post auth signup body" })
+    @UseGuards(PostAuthSignupGuard)
+    @HttpCode(ResponseStatusEnum.CREATED)
+    @Post("/signup")
+    public async postAuthSignup(@Request() request: FastifyRequest<{ Body: PostAuthSignupBodyDto }>, @ResponseDecorator() response: FastifyReply) {
+        return await this.commandBus.execute(new PostAuthSignupCommand(request, response));
+    }
 }

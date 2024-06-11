@@ -5,9 +5,9 @@ import { SessionQueue } from "@core/queues/session.queue";
 
 @EventsHandler(SessionCreatedEvent)
 export class SessionCreatedHandler {
-	constructor(private readonly sessionQueue: SessionQueue) {}
+    constructor(private readonly sessionQueue: SessionQueue) {}
 
-	public async handle(event: SessionCreatedEvent) {
-		return await this.sessionQueue.addCreated(event);
-	}
+    public async handle(event: SessionCreatedEvent) {
+        return await this.sessionQueue.addCreated(event);
+    }
 }

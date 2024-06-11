@@ -17,22 +17,22 @@ import { JwtModule } from "@core/modules/jwt.module";
 import { KeyModule } from "@core/modules/key.module";
 
 @Module({
-	imports: [
-		RepositoryModule,
-		ExceptionModule,
-		ResponseModule,
-		StrategyModule,
-		BcryptModule,
-		ConfigModule,
-		CookieModule,
-		PrismaModule,
-		MinioModule,
-		AuthModule,
-		BullModule,
-		CqrsModule,
-		UserModule,
-		JwtModule,
-		KeyModule
-	]
+    imports: [
+        RepositoryModule,
+        ExceptionModule,
+        ResponseModule,
+        StrategyModule,
+        BcryptModule,
+        ConfigModule,
+        CookieModule,
+        PrismaModule,
+        MinioModule,
+        AuthModule,
+        BullModule,
+        CqrsModule,
+        UserModule,
+        JwtModule,
+        KeyModule
+    ]
 })
 export class AppModule {}

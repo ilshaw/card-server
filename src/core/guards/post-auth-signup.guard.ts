@@ -8,25 +8,25 @@ import { UserEntity } from "@common/entities/user.entity";
 
 @Injectable()
 export class PostAuthSignupGuard extends AuthGuard("post-auth-signup") implements CanActivate {
-	constructor(private readonly exceptionService: ExceptionService) {
-		super();
-	}
+    constructor(private readonly exceptionService: ExceptionService) {
+        super();
+    }
 
-	public handleRequest<T extends UserEntity>(error: unknown, user: T) {
-		if(error) {
-			throw error;
-		}
-		else {
-			if(user) {
-				throw this.exceptionService.conflictException("Login is already taken");
-			}
-			else {
-				return lodash.omit(user, "password");
-			}
-		}
-	}
+    public handleRequest<T extends UserEntity>(error: unknown, user: T) {
+        if(error) {
+            throw error;
+        }
+        else {
+            if(user) {
+                throw this.exceptionService.conflictException("Login is already taken");
+            }
+            else {
+                return lodash.omit(user, "password");
+            }
+        }
+    }
 
-	public canActivate(context: ExecutionContext) {
-		return super.canActivate(context);
-	}
+    public canActivate(context: ExecutionContext) {
+        return super.canActivate(context);
+    }
 }

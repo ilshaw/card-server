@@ -13,31 +13,31 @@ import { JwtService } from "@core/services/jwt.service";
 
 @CommandHandler(PostAuthSignupCommand)
 export class PostAuthSignupHandler {
-	constructor(
-		private readonly responseService: ResponseService,
-		private readonly userRepository: UserRepository,
-		private readonly bcryptService: BcryptService,
-		private readonly cookieService: CookieService,
-		private readonly jwtService: JwtService,
-		private readonly eventBus: EventBus,
-	) {}
+    constructor(
+        private readonly responseService: ResponseService,
+        private readonly userRepository: UserRepository,
+        private readonly bcryptService: BcryptService,
+        private readonly cookieService: CookieService,
+        private readonly jwtService: JwtService,
+        private readonly eventBus: EventBus,
+    ) {}
 
-	public async execute(command: PostAuthSignupCommand) {
-		const hash = await this.bcryptService.hashData(command.request.body.password);
+    public async execute(command: PostAuthSignupCommand) {
+        const hash = await this.bcryptService.hashData(command.request.body.password);
 
-		const user = await this.userRepository.createByLoginAndPassword(command.request.body.login, hash);
+        const user = await this.userRepository.createByLoginAndPassword(command.request.body.login, hash);
 
-		const refresh = await this.jwtService.signRefresh({ id: user.id });
-		const access = await this.jwtService.signAccess({ id: user.id });
+        const refresh = await this.jwtService.signRefresh({ id: user.id });
+        const access = await this.jwtService.signAccess({ id: user.id });
 
-		this.cookieService.setRefresh(refresh, command.response);
-		this.cookieService.setAccess(access, command.response);
+        this.cookieService.setRefresh(refresh, command.response);
+        this.cookieService.setAccess(access, command.response);
 
-		await this.eventBus.publish(new UserCreatedEvent(user));
-		await this.eventBus.publish(new SessionCreatedEvent(user, access, refresh));
+        await this.eventBus.publish(new UserCreatedEvent(user));
+        await this.eventBus.publish(new SessionCreatedEvent(user, access, refresh));
 
-		return this.responseService.createdResponse("User has successfully signed up", {
-			user: lodash.omit(user, "password")
-		});
-	}
+        return this.responseService.createdResponse("User has successfully signed up", {
+            user: lodash.omit(user, "password")
+        });
+    }
 }

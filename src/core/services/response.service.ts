@@ -5,11 +5,11 @@ import { OkResponse } from "@common/responses/ok.response";
 
 @Injectable()
 export class ResponseService {
-	public createdResponse(message: ResponseMessageType, data?: ResponseDataType) {
-		return new CreatedResponse(message, data);
-	}
+    public createdResponse(message: ResponseMessageType, data?: ResponseDataType) {
+        return new CreatedResponse(message, data);
+    }
 
-	public okResponse(message: ResponseMessageType, data?: ResponseDataType) {
-		return new OkResponse(message, data);
-	}
+    public okResponse(message: ResponseMessageType, data?: ResponseDataType) {
+        return new OkResponse(message, data);
+    }
 }

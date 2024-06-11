@@ -7,9 +7,9 @@ import { SessionCreatedJob } from "@common/jobs/session-created.job";
 
 @Injectable()
 export class SessionQueue {
-	constructor(@InjectQueue("session") private readonly sessionQueue: Queue) {}
+    constructor(@InjectQueue("session") private readonly sessionQueue: Queue) {}
 
-	public async addCreated(data: SessionCreatedJob) {
-		return await this.sessionQueue.add("created", data);
-	}
+    public async addCreated(data: SessionCreatedJob) {
+        return await this.sessionQueue.add("created", data);
+    }
 }

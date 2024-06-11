@@ -6,23 +6,23 @@ import { ConfigService } from "@core/services/config.service";
 
 @Injectable()
 export class CookieService {
-	constructor(private readonly configService: ConfigService) {}
+    constructor(private readonly configService: ConfigService) {}
 
-	public setRefresh(refresh: string, response: FastifyReply) {
-		return response.setCookie("refresh", refresh, { 
-			sameSite: "strict", 
-			httpOnly: true, 
-			maxAge: this.configService.getJwtRefreshExpires(),
-			path: "/"
-		});
-	}
+    public setRefresh(refresh: string, response: FastifyReply) {
+        return response.setCookie("refresh", refresh, { 
+            sameSite: "strict", 
+            httpOnly: true, 
+            maxAge: this.configService.getJwtRefreshExpires(),
+            path: "/"
+        });
+    }
 
-	public setAccess(access: string, response: FastifyReply) {
-		return response.setCookie("access", access, { 
-			sameSite: "strict", 
-			httpOnly: true, 
-			maxAge: this.configService.getJwtAccessExpires(),
-			path: "/"
-		});
-	}
+    public setAccess(access: string, response: FastifyReply) {
+        return response.setCookie("access", access, { 
+            sameSite: "strict", 
+            httpOnly: true, 
+            maxAge: this.configService.getJwtAccessExpires(),
+            path: "/"
+        });
+    }
 }

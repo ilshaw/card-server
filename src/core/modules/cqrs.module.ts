@@ -8,14 +8,14 @@ import { UserCreatedHandler } from "@core/events/user-created.handler";
 
 @Global()
 @Module({
-	imports: [
+    imports: [
     	NestCqrsModule.forRoot()
-	],
-	providers: [
-		PostAuthSignupHandler,
-		SessionCreatedHandler,
-		GetUserProfileHandler,
-		UserCreatedHandler
-	]
+    ],
+    providers: [
+        PostAuthSignupHandler,
+        SessionCreatedHandler,
+        GetUserProfileHandler,
+        UserCreatedHandler
+    ]
 })
 export class CqrsModule {}

@@ -8,21 +8,21 @@ import { ConfigService } from "@core/services/config.service";
 import { AppModule } from "@core/modules/app.module";
 
 async function bootstrap() {
-	const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
+    const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
 
-	app.register(cookie);
+    app.register(cookie);
 
-	const config = app.get(ConfigService);
+    const config = app.get(ConfigService);
 
   	const document = SwaggerModule.createDocument(app, new DocumentBuilder()
-		.setTitle("Auth server")
-		.setDescription("Auth server implementation")
-		.build()
-	);
+        .setTitle("Auth server")
+        .setDescription("Auth server implementation")
+        .build()
+    );
 
   	SwaggerModule.setup("swagger", app, document);
 
-	await app.listen(config.getAppPort());
+    await app.listen(config.getAppPort());
 }
 
 bootstrap();

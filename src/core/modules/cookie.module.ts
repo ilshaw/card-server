@@ -4,11 +4,11 @@ import { CookieService } from "@core/services/cookie.service";
 
 @Global()
 @Module({
-	providers: [
-		CookieService
-	],
-	exports: [
-		CookieService
-	]
+    providers: [
+        CookieService
+    ],
+    exports: [
+        CookieService
+    ]
 })
 export class CookieModule {}

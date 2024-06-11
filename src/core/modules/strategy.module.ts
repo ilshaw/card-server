@@ -5,13 +5,13 @@ import { GetUserProfileStrategy } from "@core/strategies/get-user-profile.strate
 
 @Global()
 @Module({
-	providers: [
-		PostAuthSignupStrategy,
-		GetUserProfileStrategy
-	],
-	exports: [
-		PostAuthSignupStrategy,
-		GetUserProfileStrategy
-	]
+    providers: [
+        PostAuthSignupStrategy,
+        GetUserProfileStrategy
+    ],
+    exports: [
+        PostAuthSignupStrategy,
+        GetUserProfileStrategy
+    ]
 })
 export class StrategyModule {}

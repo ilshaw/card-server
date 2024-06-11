@@ -7,22 +7,22 @@ import { ConfigService } from "@core/services/config.service";
 
 @Injectable()
 export class JwtService {
-	constructor(
-		private readonly nestJwtService: NestJwtService, 
-		private readonly configService: ConfigService
-	) {}
+    constructor(
+        private readonly nestJwtService: NestJwtService, 
+        private readonly configService: ConfigService
+    ) {}
 
-	public async signRefresh(payload: RefreshPayloadInterface) {
-		return this.nestJwtService.signAsync(payload, { 
-			algorithm: this.configService.getJwtRefreshAlgorithm(),
-			expiresIn: this.configService.getJwtRefreshExpires()
-		});
-	}
+    public async signRefresh(payload: RefreshPayloadInterface) {
+        return this.nestJwtService.signAsync(payload, { 
+            algorithm: this.configService.getJwtRefreshAlgorithm(),
+            expiresIn: this.configService.getJwtRefreshExpires()
+        });
+    }
 
-	public async signAccess(payload: AccessPayloadInterface) {
-		return this.nestJwtService.signAsync(payload, { 
-			algorithm: this.configService.getJwtAccessAlgorithm(),
-			expiresIn: this.configService.getJwtAccessExpires()
-		});
-	}
+    public async signAccess(payload: AccessPayloadInterface) {
+        return this.nestJwtService.signAsync(payload, { 
+            algorithm: this.configService.getJwtAccessAlgorithm(),
+            expiresIn: this.configService.getJwtAccessExpires()
+        });
+    }
 }

@@ -9,35 +9,35 @@ import { ConfigService } from "@core/services/config.service";
 
 @Global()
 @Module({
-	imports: [
+    imports: [
     	NestBullModule.forRootAsync({
-			useFactory: (configService: ConfigService) => ({
-				redis: {
-					password: configService.getRedisPass(),
-					host: configService.getRedisHost(),
-					port: configService.getRedisPort()
-				}
-			}),
-			inject: [
-				ConfigService
-			]
-		}),
-		NestBullModule.registerQueue({
-			name: "session",
-		}),
-		NestBullModule.registerQueue({
-			name: "user",
-		})
-	],
-	providers: [
-		SessionProcessor,
-		UserProcessor,
-		SessionQueue,
-		UserQueue
-	],
-	exports: [
-		SessionQueue,
-		UserQueue
-	]
+            useFactory: (configService: ConfigService) => ({
+                redis: {
+                    password: configService.getRedisPass(),
+                    host: configService.getRedisHost(),
+                    port: configService.getRedisPort()
+                }
+            }),
+            inject: [
+                ConfigService
+            ]
+        }),
+        NestBullModule.registerQueue({
+            name: "session",
+        }),
+        NestBullModule.registerQueue({
+            name: "user",
+        })
+    ],
+    providers: [
+        SessionProcessor,
+        UserProcessor,
+        SessionQueue,
+        UserQueue
+    ],
+    exports: [
+        SessionQueue,
+        UserQueue
+    ]
 })
 export class BullModule {}

@@ -8,23 +8,23 @@ import { ConflictException } from "@common/exceptions/conflict.exception";
 
 @Injectable()
 export class ExceptionService {
-	public unauthorizedException(message: ResponseMessageType) {
-		return new UnauthorizedException(message);
-	}
+    public unauthorizedException(message: ResponseMessageType) {
+        return new UnauthorizedException(message);
+    }
 
-	public badRequestException(message: ResponseMessageType) {
-		return new BadRequestException(message);
-	}
+    public badRequestException(message: ResponseMessageType) {
+        return new BadRequestException(message);
+    }
 
-	public forbiddenException(message: ResponseMessageType) {
-		return new ForbiddenException(message);
-	}
+    public forbiddenException(message: ResponseMessageType) {
+        return new ForbiddenException(message);
+    }
 
-	public notFoundException(message: ResponseMessageType) {
-		return new NotFoundException(message);
-	}
+    public notFoundException(message: ResponseMessageType) {
+        return new NotFoundException(message);
+    }
 
-	public conflictException(message: ResponseMessageType) {
-		return new ConflictException(message);
-	}
+    public conflictException(message: ResponseMessageType) {
+        return new ConflictException(message);
+    }
 }

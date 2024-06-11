@@ -4,11 +4,11 @@ import { MinioService } from "@core/services/minio.service";
 
 @Global()
 @Module({
-	providers: [
-		MinioService
-	],
-	exports: [
-		MinioService
-	]
+    providers: [
+        MinioService
+    ],
+    exports: [
+        MinioService
+    ]
 })
 export class MinioModule {}
