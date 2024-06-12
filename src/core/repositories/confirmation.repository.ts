@@ -4,7 +4,7 @@ import { PrismaService } from "@core/services/prisma.service";
 import { UserEntity } from "@common/entities/user.entity";
 
 @Injectable()
-export class SessionRepository {
+export class ConfirmationRepository {
     constructor(private readonly prismaService: PrismaService) {}
 
     public async createByUserAndConfirm(user: Omit<UserEntity, "password">, confirm: ConfirmTokenType) {
