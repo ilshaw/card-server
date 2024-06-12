@@ -27,13 +27,15 @@ export class PostAuthSignupHandler {
 
         const user = await this.userRepository.createByLoginAndPassword(command.request.body.login, hash);
 
+        const confirm = await this.jwtService.signConfirm({ id: user.id });
+
         const refresh = await this.jwtService.signRefresh({ id: user.id });
         const access = await this.jwtService.signAccess({ id: user.id });
 
         this.cookieService.setRefresh(refresh, command.response);
         this.cookieService.setAccess(access, command.response);
 
-        await this.eventBus.publish(new UserCreatedEvent(user));
+        await this.eventBus.publish(new UserCreatedEvent(user, confirm));
         await this.eventBus.publish(new SessionCreatedEvent(user, access, refresh));
 
         return this.responseService.createdResponse("User has successfully signed up", {
