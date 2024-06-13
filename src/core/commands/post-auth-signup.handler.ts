@@ -35,8 +35,8 @@ export class PostAuthSignupHandler {
         this.cookieService.setRefresh(refresh, command.response);
         this.cookieService.setAccess(access, command.response);
 
-        await this.eventBus.publish(new UserCreatedEvent(user, confirm));
         await this.eventBus.publish(new SessionCreatedEvent(user, access, refresh));
+        await this.eventBus.publish(new UserCreatedEvent(user, confirm));
 
         return this.responseService.createdResponse("User has successfully signed up", {
             user: lodash.omit(user, "password")

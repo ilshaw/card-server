@@ -28,4 +28,15 @@ export class ConfirmationRepository {
             }
         });
     }
+
+    public async deleteByUserAndConfirm(user: Omit<UserEntity, "password">, confirm: ConfirmTokenType) {
+        return await this.prismaService.confirmation.delete({
+            where: {
+                user_id_confirm: {
+                    user_id: user.id,
+                    confirm: confirm
+                }
+            }
+        });
+    }
 }

@@ -30,4 +30,15 @@ export class UserRepository {
             }
         });
     }
+
+    public async confirmById(id: string) {
+        return await this.prismaService.user.update({
+            data: {
+                confirmed: true
+            },
+            where: {
+                id: id
+            }
+        });
+    }
 }
