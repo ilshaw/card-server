@@ -2,9 +2,9 @@ import { CommandHandler, EventBus } from "@nestjs/cqrs";
 
 import * as lodash from "lodash";
 
+import { ConfirmationCreatedEvent } from "@common/events/confirmation-created.event";
 import { PostAuthSignupCommand } from "@common/commands/post-auth-signup.command";
 import { SessionCreatedEvent } from "@common/events/session-created.event";
-import { UserCreatedEvent } from "@common/events/user-created.event";
 import { UserRepository } from "@core/repositories/user.repository";
 import { ResponseService } from "@core/services/response.service";
 import { BcryptService } from "@core/services/bcrypt.service";
@@ -35,8 +35,8 @@ export class PostAuthSignupHandler {
         this.cookieService.setRefresh(refresh, command.response);
         this.cookieService.setAccess(access, command.response);
 
+        await this.eventBus.publish(new ConfirmationCreatedEvent(user, confirm));
         await this.eventBus.publish(new SessionCreatedEvent(user, access, refresh));
-        await this.eventBus.publish(new UserCreatedEvent(user, confirm));
 
         return this.responseService.createdResponse("User has successfully signed up", {
             user: lodash.omit(user, "password")
