@@ -1,4 +1,4 @@
-import { ApiTags, ApiBody, ApiCreatedResponse, ApiConflictResponse, ApiOkResponse } from "@nestjs/swagger";
+import { ApiTags, ApiBody, ApiOkResponse, ApiCreatedResponse } from "@nestjs/swagger";
 import { Controller, UseGuards, HttpCode, Post, Request } from "@nestjs/common";
 import { CommandBus } from "@nestjs/cqrs";
 
@@ -19,7 +19,6 @@ import { UserRequest } from "@common/interfaces/user-request.interface";
 export class AuthController {
     constructor(private readonly commandBus: CommandBus) {}
 
-    @ApiConflictResponse({ description: "Login is already taken" })
     @ApiCreatedResponse({ description: "User has successfully signed up" })
     @ApiBody({ type: PostAuthSignupBodyDto, required: true, description: "Post auth signup body" })
     @UseGuards(PostAuthSignupGuard)

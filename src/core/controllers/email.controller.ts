@@ -1,5 +1,5 @@
 import { Controller, UseGuards, HttpCode, Patch, Request } from "@nestjs/common";
-import { ApiTags, ApiSecurity } from "@nestjs/swagger";
+import { ApiTags, ApiSecurity, ApiOkResponse } from "@nestjs/swagger";
 import { CommandBus } from "@nestjs/cqrs";
 
 import { FastifyReply } from "fastify";
@@ -16,6 +16,7 @@ import { UserRequest } from "@common/interfaces/user-request.interface";
 export class EmailController {
     constructor(private readonly commandBus: CommandBus) {}
 
+    @ApiOkResponse({ description: "Email has successfully confirmed" })
     @ApiSecurity("confirm")
     @UseGuards(PatchEmailConfirmGuard)
     @HttpCode(ResponseStatusEnum.OK)

@@ -24,8 +24,9 @@ async function bootstrap() {
   	const document = SwaggerModule.createDocument(app, new DocumentBuilder()
         .setTitle("Auth server")
         .setDescription("Auth server implementation")
-        .addCookieAuth("refresh", { type: "apiKey", description: "Refresh token cookie" }, "refresh")
-        .addCookieAuth("access", { type: "apiKey", description: "Access token cookie" }, "access")
+        .addSecurity("confirm", { type: "apiKey", in: "header", name: "authorization", description: "Confirm token header" })
+        .addSecurity("refresh", { type: "apiKey", in: "cookie", name: "refresh", description: "Refresh token cookie" })
+        .addSecurity("access", { type: "apiKey", in: "cookie", name: "access", description: "Access token cookie" })
         .build()
     );
 
