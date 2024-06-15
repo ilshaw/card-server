@@ -5,6 +5,7 @@ import { ClientExceptionInterceptor } from "@core/interceptors/client-exception.
 import { ClientResponseInterceptor } from "@core/interceptors/client-response.interceptor";
 import { ClientExceptionFilter } from "@core/filters/client-exception.filter";
 import { ServerExceptionFilter } from "@core/filters/server-exception.filter";
+import { NodemailerModule } from "@core/modules/nodemailer.module";
 import { RepositoryModule } from "@core/modules/repository.module";
 import { ExceptionModule } from "@core/modules/exception.module";
 import { PasswordModule } from "@core/modules/password.module";
@@ -27,6 +28,7 @@ import { KeyModule } from "@core/modules/key.module";
 
 @Module({
     imports: [
+        NodemailerModule,
         RepositoryModule,
         ExceptionModule,
         PasswordModule,
