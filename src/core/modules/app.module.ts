@@ -7,6 +7,7 @@ import { ClientExceptionFilter } from "@core/filters/client-exception.filter";
 import { ServerExceptionFilter } from "@core/filters/server-exception.filter";
 import { RepositoryModule } from "@core/modules/repository.module";
 import { ExceptionModule } from "@core/modules/exception.module";
+import { PasswordModule } from "@core/modules/password.module";
 import { ResponseModule } from "@core/modules/response.module";
 import { StrategyModule } from "@core/modules/strategy.module";
 import { BcryptModule } from "@core/modules/bcrypt.module";
@@ -28,6 +29,7 @@ import { KeyModule } from "@core/modules/key.module";
     imports: [
         RepositoryModule,
         ExceptionModule,
+        PasswordModule,
         ResponseModule,
         StrategyModule,
         BcryptModule,
