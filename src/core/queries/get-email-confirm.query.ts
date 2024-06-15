@@ -18,6 +18,6 @@ export class GetEmailConfirmHandler {
 
         await this.eventBus.publish(new ConfirmationCreatedEvent(query.request.user, confirm));
 
-        return this.responseService.okResponse("Confirmation has successfully created");
+        return this.responseService.okResponse("Confirmation has successfully sended");
     }
 }

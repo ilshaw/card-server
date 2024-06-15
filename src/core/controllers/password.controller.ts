@@ -1,5 +1,5 @@
 import { Controller, UseGuards, HttpCode, Patch, Request, Get } from "@nestjs/common";
-import { ApiTags, ApiSecurity, ApiOkResponse } from "@nestjs/swagger";
+import { ApiTags, ApiBody, ApiSecurity, ApiOkResponse } from "@nestjs/swagger";
 import { QueryBus, CommandBus } from "@nestjs/cqrs";
 
 import { FastifyReply } from "fastify";
@@ -23,6 +23,7 @@ export class PasswordController {
 
     @ApiOkResponse({ description: "Password has successfully reseted" })
     @ApiSecurity("confirm")
+    @ApiBody({ type: PatchPasswordResetBodyDto, required: true, description: "Patch password reset body" })
     @UseGuards(PatchPasswordResetGuard)
     @HttpCode(ResponseStatusEnum.OK)
     @Patch("/reset")
@@ -30,7 +31,7 @@ export class PasswordController {
         return await this.commandBus.execute(new PatchPasswordResetCommand(request, response));
     }
 
-    @ApiOkResponse({ description: "Confirmation has successfully created" })
+    @ApiOkResponse({ description: "Confirmation has successfully sended" })
     @ApiSecurity("access")
     @UseGuards(GetPasswordResetGuard)
     @HttpCode(ResponseStatusEnum.OK)

@@ -16,12 +16,12 @@ export class PostAuthLoginStrategy extends PassportStrategy(Strategy, "post-auth
     ) {
         super({
             passwordField: "password",
-            usernameField: "login"
+            usernameField: "email"
         });
     }
 
-    public async validate(login: string, password: string) {
-        const user = await this.userRepository.findUniqueByLogin(login);
+    public async validate(email: string, password: string) {
+        const user = await this.userRepository.findUniqueByEmail(email);
 
         if(user) {
             const result = await this.bcryptService.compareData(password, user.password);

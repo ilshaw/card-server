@@ -20,7 +20,7 @@ export class NodemailerService {
         });
     }
 
-    public async sendMail(options: nodemailer.SendMailOptions) {
-        return await this.transporter.sendMail(options);
+    public async sendMail(options: Omit<nodemailer.SendMailOptions, "from">) {
+        return await this.transporter.sendMail({ ...options, from: this.configService.getNodemailerUser() });
     }
 }

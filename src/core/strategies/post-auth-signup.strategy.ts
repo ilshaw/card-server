@@ -14,15 +14,15 @@ export class PostAuthSignupStrategy extends PassportStrategy(Strategy, "post-aut
     ) {
         super({
             passwordField: "password",
-            usernameField: "login"
+            usernameField: "email"
         });
     }
 
-    public async validate(login: string) {
-        const user = await this.userRepository.findUniqueByLogin(login);
+    public async validate(email: string) {
+        const user = await this.userRepository.findUniqueByEmail(email);
 
         if(user) {
-            throw this.exceptionService.conflictException("Login is already taken");
+            throw this.exceptionService.conflictException("Email is already taken");
         }
         else {
             return user;

@@ -6,19 +6,19 @@ import { PrismaService } from "@core/services/prisma.service";
 export class UserRepository {
     constructor(private readonly prismaService: PrismaService) {}
 
-    public async createByLoginAndPassword(login: string, password: string) {
+    public async createByEmailAndPassword(email: string, password: string) {
         return await this.prismaService.user.create({
             data: {
                 password: password,
-                login: login
+                email: email
             }
         });
     }
 
-    public async findUniqueByLogin(login: string) {
+    public async findUniqueByEmail(email: string) {
         return await this.prismaService.user.findUnique({
             where: {
-                login: login
+                email: email
             }
         });
     }

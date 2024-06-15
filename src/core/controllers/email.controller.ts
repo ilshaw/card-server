@@ -30,7 +30,7 @@ export class EmailController {
         return await this.commandBus.execute(new PatchEmailConfirmCommand(request, response));
     }
 
-    @ApiOkResponse({ description: "Confirmation has successfully created" })
+    @ApiOkResponse({ description: "Confirmation has successfully sended" })
     @ApiSecurity("access")
     @UseGuards(GetEmailConfirmGuard)
     @HttpCode(ResponseStatusEnum.OK)

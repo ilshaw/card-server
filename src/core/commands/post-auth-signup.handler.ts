@@ -25,7 +25,7 @@ export class PostAuthSignupHandler {
     public async execute(command: PostAuthSignupCommand) {
         const hash = await this.bcryptService.hashData(command.request.body.password);
 
-        const user = await this.userRepository.createByLoginAndPassword(command.request.body.login, hash);
+        const user = await this.userRepository.createByEmailAndPassword(command.request.body.email, hash);
 
         const confirm = await this.jwtService.signConfirm({ id: user.id });
 

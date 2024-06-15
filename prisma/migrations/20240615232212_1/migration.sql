@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "users" (
     "id" TEXT NOT NULL,
-    "login" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "confirmed" BOOLEAN NOT NULL DEFAULT false,
     "created" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -34,7 +34,7 @@ CREATE TABLE "confirmations" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "users_login_key" ON "users"("login");
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "sessions_user_id_access_key" ON "sessions"("user_id", "access");

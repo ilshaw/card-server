@@ -9,7 +9,7 @@ datasource Database {
 
 model User {
     id            String   @map("id")        @default(uuid())
-	login         String   @map("login")
+	email         String   @map("email")
     password      String   @map("password")
 	confirmed     Boolean  @map("confirmed") @default(false)
 
@@ -21,7 +21,7 @@ model User {
 
     @@id([id])
     @@map("users")
-	@@unique([login])
+	@@unique([email])
 }
 
 model Session {

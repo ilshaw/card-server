@@ -18,7 +18,7 @@ export class PostAuthSignupGuard extends AuthGuard("post-auth-signup") implement
         }
         else {
             if(user) {
-                throw this.exceptionService.conflictException("Login is already taken");
+                throw this.exceptionService.conflictException("Email is already taken");
             }
             else {
                 return lodash.omit(user, "password");
