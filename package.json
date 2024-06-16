@@ -1,9 +1,7 @@
 {
   "name": "auth-server",
   "scripts": {
-    "migrate:deploy": "prisma migrate deploy",
     "migrate:dev": "prisma migrate dev",
-    "start:prod": "nest start",
     "start:dev": "nest start --watch",
     "generate": "prisma generate",
     "lint": "eslint ./src/**/*.ts --fix"
