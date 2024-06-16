@@ -10,12 +10,14 @@ import { ConfigService } from "@core/services/config.service";
     imports: [
     	NestConfigModule.forRoot({
             validationSchema: joi.object({
-                JWT_REFRESH_ALGORITHM: joi.string().required(),
-                JWT_CONFIRM_ALGORITHM: joi.string().required(),
-                JWT_ACCESS_ALGORITHM: joi.string().required(),
-                JWT_REFRESH_EXPIRES: joi.number().required(),
-                JWT_CONFIRM_EXPIRES: joi.number().required(),
-                JWT_ACCESS_EXPIRES: joi.number().required(),
+                COOKIE_EXPIRES_REFRESH: joi.number().required(),
+                COOKIE_EXPIRES_ACCESS: joi.number().required(),
+                JWT_ALGORITHM_REFRESH: joi.string().required(),
+                JWT_ALGORITHM_CONFIRM: joi.string().required(),
+                JWT_ALGORITHM_ACCESS: joi.string().required(),
+                JWT_EXPIRES_REFRESH: joi.number().required(),
+                JWT_EXPIRES_CONFIRM: joi.number().required(),
+                JWT_EXPIRES_ACCESS: joi.number().required(),
                 NODEMAILER_SECURE: joi.boolean().required(),
                 NODEMAILER_USER: joi.string().required(),
                 NODEMAILER_PASS: joi.string().required(),

@@ -15,22 +15,22 @@ export class JwtService {
 
     public async signRefresh(payload: RefreshPayloadInterface) {
         return this.nestJwtService.signAsync(payload, { 
-            algorithm: this.configService.getJwtRefreshAlgorithm(),
-            expiresIn: this.configService.getJwtRefreshExpires()
+            algorithm: this.configService.getJwtAlgorithmRefresh(),
+            expiresIn: this.configService.getJwtExpiresRefresh()
         });
     }
 
     public async signConfirm(payload: ConfirmPayloadInterface) {
         return this.nestJwtService.signAsync(payload, { 
-            algorithm: this.configService.getJwtConfirmAlgorithm(),
-            expiresIn: this.configService.getJwtConfirmExpires()
+            algorithm: this.configService.getJwtAlgorithmConfirm(),
+            expiresIn: this.configService.getJwtExpiresConfirm()
         });
     }
 
     public async signAccess(payload: AccessPayloadInterface) {
         return this.nestJwtService.signAsync(payload, { 
-            algorithm: this.configService.getJwtAccessAlgorithm(),
-            expiresIn: this.configService.getJwtAccessExpires()
+            algorithm: this.configService.getJwtAlgorithmAccess(),
+            expiresIn: this.configService.getJwtExpiresAccess()
         });
     }
 }

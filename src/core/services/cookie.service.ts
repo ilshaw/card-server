@@ -12,7 +12,7 @@ export class CookieService {
         return response.setCookie("refresh", refresh, { 
             sameSite: "strict", 
             httpOnly: true, 
-            maxAge: this.configService.getJwtRefreshExpires(),
+            maxAge: this.configService.getCookieExpiresRefresh(),
             path: "/"
         });
     }
@@ -21,7 +21,7 @@ export class CookieService {
         return response.setCookie("access", access, { 
             sameSite: "strict", 
             httpOnly: true, 
-            maxAge: this.configService.getJwtAccessExpires(),
+            maxAge: this.configService.getCookieExpiresAccess(),
             path: "/"
         });
     }

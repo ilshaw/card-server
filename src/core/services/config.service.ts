@@ -5,28 +5,36 @@ import { Injectable } from "@nestjs/common";
 export class ConfigService {
     constructor(private readonly nestConfigService: NestConfigService) {}
 
-    public getJwtRefreshAlgorithm() {
-        return this.nestConfigService.get("JWT_REFRESH_ALGORITHM");
+    public getCookieExpiresRefresh() {
+        return this.nestConfigService.get("COOKIE_EXPIRES_REFRESH");
     }
 
-    public getJwtConfirmAlgorithm() {
-        return this.nestConfigService.get("JWT_CONFIRM_ALGORITHM");
+    public getCookieExpiresAccess() {
+        return this.nestConfigService.get("COOKIE_EXPIRES_ACCESS");
     }
 
-    public getJwtAccessAlgorithm() {
-        return this.nestConfigService.get("JWT_ACCESS_ALGORITHM");
+    public getJwtAlgorithmRefresh() {
+        return this.nestConfigService.get("JWT_ALGORITHM_REFRESH");
     }
 
-    public getJwtRefreshExpires() {
-        return this.nestConfigService.get("JWT_REFRESH_EXPIRES");
+    public getJwtAlgorithmConfirm() {
+        return this.nestConfigService.get("JWT_ALGORITHM_CONFIRM");
     }
 
-    public getJwtConfirmExpires() {
-        return this.nestConfigService.get("JWT_CONFIRM_EXPIRES");
+    public getJwtAlgorithmAccess() {
+        return this.nestConfigService.get("JWT_ALGORITHM_ACCESS");
     }
 
-    public getJwtAccessExpires() {
-        return this.nestConfigService.get("JWT_ACCESS_EXPIRES");
+    public getJwtExpiresRefresh() {
+        return this.nestConfigService.get("JWT_EXPIRES_REFRESH");
+    }
+
+    public getJwtExpiresConfirm() {
+        return this.nestConfigService.get("JWT_EXPIRES_CONFIRM");
+    }
+
+    public getJwtExpiresAccess() {
+        return this.nestConfigService.get("JWT_EXPIRES_ACCESS");
     }
 
     public getNodemailerSecure() {
