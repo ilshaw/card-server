@@ -13,7 +13,7 @@ export class ServerExceptionFilter implements ExceptionFilter {
         const response = exception.getResponse();
         const status = exception.getStatus();
 
-        this.pinoService.error(response.cause);
+        this.pinoService.error(response);
 	
         return host.switchToHttp().getResponse<FastifyReply>().status(status).send(response);
     }

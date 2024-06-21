@@ -25,4 +25,12 @@ export class CookieService {
             path: "/"
         });
     }
+
+    public clearRefresh(response: FastifyReply) {
+        return response.clearCookie("refresh");
+    }
+
+    public clearAccess(response: FastifyReply) {
+        return response.clearCookie("access");
+    }
 }

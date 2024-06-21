@@ -1,1 +1,0 @@
-export { Session as SessionEntity } from "@prisma/client";

@@ -2,8 +2,8 @@ import { ServerExceptionInterface } from "@common/interfaces/server-exception.in
 import { ExceptionStatusEnum } from "@common/enums/exception-status.enum";
 import { BaseExceptionClass } from "@common/classes/base-exception.class";
 
-export class ServerExceptionClass extends BaseExceptionClass<ServerExceptionInterface> {
-    constructor(response: ServerExceptionInterface, status: ExceptionStatusEnum) {
+export class ServerExceptionClass<R extends ServerExceptionInterface = ServerExceptionInterface> extends BaseExceptionClass<R> {
+    constructor(response: R, status: ExceptionStatusEnum) {
         super(response, status);
     }
 }

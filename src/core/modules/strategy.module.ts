@@ -8,6 +8,7 @@ import { GetTokenRefreshStrategy } from "@core/strategies/get-token-refresh.stra
 import { PostAuthSignupStrategy } from "@core/strategies/post-auth-signup.strategy";
 import { GetUserProfileStrategy } from "@core/strategies/get-user-profile.strategy";
 import { PostAuthLoginStrategy } from "@core/strategies/post-auth-login.strategy";
+import { GetAuthLogoutStrategy } from "@core/strategies/get-auth-logout.strategy";
 
 @Global()
 @Module({
@@ -19,7 +20,8 @@ import { PostAuthLoginStrategy } from "@core/strategies/post-auth-login.strategy
         GetTokenRefreshStrategy,
         PostAuthSignupStrategy,
         GetUserProfileStrategy,
-        PostAuthLoginStrategy
+        PostAuthLoginStrategy,
+        GetAuthLogoutStrategy
     ],
     exports: [
         PatchPasswordResetStrategy,
@@ -29,7 +31,8 @@ import { PostAuthLoginStrategy } from "@core/strategies/post-auth-login.strategy
         GetTokenRefreshStrategy,
         PostAuthSignupStrategy,
         GetUserProfileStrategy,
-        PostAuthLoginStrategy
+        PostAuthLoginStrategy,
+        GetAuthLogoutStrategy
     ]
 })
 export class StrategyModule {}

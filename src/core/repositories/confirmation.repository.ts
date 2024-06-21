@@ -7,7 +7,7 @@ import { UserEntity } from "@common/entities/user.entity";
 export class ConfirmationRepository {
     constructor(private readonly prismaService: PrismaService) {}
 
-    public async createByUserAndConfirm(user: Omit<UserEntity, "password">, confirm: ConfirmTokenType) {
+    public async createByUserAndConfirm(user: UserEntity, confirm: ConfirmTokenType) {
         return await this.prismaService.confirmation.create({
             data: {
                 user: {
@@ -18,7 +18,7 @@ export class ConfirmationRepository {
         });
     }
 
-    public async findUniqueByUserAndConfirm(user: Omit<UserEntity, "password">, confirm: ConfirmTokenType) {
+    public async findUniqueByUserAndConfirm(user: UserEntity, confirm: ConfirmTokenType) {
         return await this.prismaService.confirmation.findUnique({
             where: {
                 user_id_confirm: {
@@ -29,7 +29,7 @@ export class ConfirmationRepository {
         });
     }
 
-    public async deleteByUserAndConfirm(user: Omit<UserEntity, "password">, confirm: ConfirmTokenType) {
+    public async deleteByUserAndConfirm(user: UserEntity, confirm: ConfirmTokenType) {
         return await this.prismaService.confirmation.delete({
             where: {
                 user_id_confirm: {

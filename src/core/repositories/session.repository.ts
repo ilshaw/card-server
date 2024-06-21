@@ -7,7 +7,7 @@ import { UserEntity } from "@common/entities/user.entity";
 export class SessionRepository {
     constructor(private readonly prismaService: PrismaService) {}
 
-    public async createByUserAndAccessAndRefresh(user: Omit<UserEntity, "password">, access: AccessTokenType, refresh: RefreshTokenType) {
+    public async createByUserAndAccessAndRefresh(user: UserEntity, access: AccessTokenType, refresh: RefreshTokenType) {
         return await this.prismaService.session.create({
             data: {
                 user: {
@@ -19,7 +19,7 @@ export class SessionRepository {
         });
     }
 
-    public async findUniqueByUserAndRefresh(user: Omit<UserEntity, "password">, refresh: RefreshTokenType) {
+    public async findUniqueByUserAndRefresh(user: UserEntity, refresh: RefreshTokenType) {
         return await this.prismaService.session.findUnique({
             where: {
                 user_id_refresh: {
@@ -30,8 +30,19 @@ export class SessionRepository {
         });
     }
 
-    public async findUniqueByUserAndAccess(user: Omit<UserEntity, "password">, access: AccessTokenType) {
+    public async findUniqueByUserAndAccess(user: UserEntity, access: AccessTokenType) {
         return await this.prismaService.session.findUnique({ 
+            where: {
+                user_id_access: {
+                    user_id: user.id,
+                    access: access
+                }
+            }
+        });
+    }
+
+    public async deleteByUserAndAccess(user: UserEntity, access: AccessTokenType) {
+        return await this.prismaService.session.delete({ 
             where: {
                 user_id_access: {
                     user_id: user.id,

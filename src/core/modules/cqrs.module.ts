@@ -2,7 +2,6 @@ import { CqrsModule as NestCqrsModule } from "@nestjs/cqrs";
 import { Global, Module } from "@nestjs/common";
 
 import { PatchPasswordResetHandler } from "@core/commands/patch-password-reset.handler";
-import { ConfirmationCreatedHandler } from "@core/events/confirmation-created.handler";
 import { PatchEmailConfirmHandler } from "@core/commands/patch-email-confirm.handler";
 import { GetPasswordResetHandler } from "@core/queries/get-password-reset.query";
 import { PostAuthSignupHandler } from "@core/commands/post-auth-signup.handler";
@@ -12,7 +11,7 @@ import { PasswordResetedHandler } from "@core/events/password-reseted.handler";
 import { PostAuthLoginHandler } from "@core/commands/post-auth-login.handler";
 import { EmailConfirmedHandler } from "@core/events/email-confirmed.handler";
 import { GetUserProfileHandler } from "@core/queries/get-user-profile.query";
-import { SessionCreatedHandler } from "@core/events/session-created.handler";
+import { GetAuthLogoutHandler } from "@core/queries/get-auth-logout.query";
 
 @Global()
 @Module({
@@ -20,7 +19,6 @@ import { SessionCreatedHandler } from "@core/events/session-created.handler";
     	NestCqrsModule.forRoot()
     ],
     providers: [
-        ConfirmationCreatedHandler,
         PatchPasswordResetHandler,
         PatchEmailConfirmHandler,
         GetPasswordResetHandler,
@@ -30,8 +28,8 @@ import { SessionCreatedHandler } from "@core/events/session-created.handler";
         PostAuthSignupHandler,
         EmailConfirmedHandler,
         GetUserProfileHandler,
-        SessionCreatedHandler,
-        PostAuthLoginHandler
+        PostAuthLoginHandler,
+        GetAuthLogoutHandler
     ]
 })
 export class CqrsModule {}
