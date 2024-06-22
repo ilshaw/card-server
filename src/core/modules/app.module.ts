@@ -18,6 +18,7 @@ import { PrismaModule } from "@core/modules/prisma.module";
 import { EmailModule } from "@core/modules/email.module";
 import { MinioModule } from "@core/modules/minio.module";
 import { TokenModule } from "@core/modules/token.module";
+import { CacheModule } from "@core/modules/cache.module";
 import { AuthModule } from "@core/modules/auth.module";
 import { BullModule } from "@core/modules/bull.module";
 import { CqrsModule } from "@core/modules/cqrs.module";
@@ -41,6 +42,7 @@ import { KeyModule } from "@core/modules/key.module";
         EmailModule,
         MinioModule,
         TokenModule,
+        CacheModule,
         AuthModule,
         BullModule,
         CqrsModule,
