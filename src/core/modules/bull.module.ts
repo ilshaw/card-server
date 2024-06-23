@@ -1,11 +1,9 @@
 import { BullModule as NestBullModule } from "@nestjs/bull";
 import { Global, Module } from "@nestjs/common";
 
-import { PasswordProcessor } from "@core/processors/password.processor";
-import { EmailProcessor } from "@core/processors/email.processor";
+import { SessionProcessor } from "@core/processors/session.processor";
 import { ConfigService } from "@core/services/config.service";
-import { PasswordQueue } from "@core/queues/password.queue";
-import { EmailQueue } from "@core/queues/email.queue";
+import { SessionQueue } from "@core/queues/session.queue";
 
 @Global()
 @Module({
@@ -23,21 +21,15 @@ import { EmailQueue } from "@core/queues/email.queue";
             ]
         }),
         NestBullModule.registerQueue({
-            name: "password",
-        }),
-        NestBullModule.registerQueue({
-            name: "email",
+            name: "session",
         })
     ],
     providers: [
-        PasswordProcessor,
-        EmailProcessor,
-        PasswordQueue,
-        EmailQueue
+        SessionProcessor,
+        SessionQueue
     ],
     exports: [
-        PasswordQueue,
-        EmailQueue
+        SessionQueue
     ]
 })
 export class BullModule {}

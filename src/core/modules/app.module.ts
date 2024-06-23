@@ -5,17 +5,14 @@ import { ClientExceptionInterceptor } from "@core/interceptors/client-exception.
 import { ClientResponseInterceptor } from "@core/interceptors/client-response.interceptor";
 import { ClientExceptionFilter } from "@core/filters/client-exception.filter";
 import { ServerExceptionFilter } from "@core/filters/server-exception.filter";
-import { NodemailerModule } from "@core/modules/nodemailer.module";
 import { RepositoryModule } from "@core/modules/repository.module";
 import { ExceptionModule } from "@core/modules/exception.module";
-import { PasswordModule } from "@core/modules/password.module";
 import { ResponseModule } from "@core/modules/response.module";
 import { StrategyModule } from "@core/modules/strategy.module";
 import { BcryptModule } from "@core/modules/bcrypt.module";
 import { ConfigModule } from "@core/modules/config.module";
 import { CookieModule } from "@core/modules/cookie.module";
 import { PrismaModule } from "@core/modules/prisma.module";
-import { EmailModule } from "@core/modules/email.module";
 import { MinioModule } from "@core/modules/minio.module";
 import { TokenModule } from "@core/modules/token.module";
 import { AuthModule } from "@core/modules/auth.module";
@@ -28,17 +25,14 @@ import { KeyModule } from "@core/modules/key.module";
 
 @Module({
     imports: [
-        NodemailerModule,
         RepositoryModule,
         ExceptionModule,
-        PasswordModule,
         ResponseModule,
         StrategyModule,
         BcryptModule,
         ConfigModule,
         CookieModule,
         PrismaModule,
-        EmailModule,
         MinioModule,
         TokenModule,
         AuthModule,

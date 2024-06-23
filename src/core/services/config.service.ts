@@ -17,20 +17,12 @@ export class ConfigService {
         return this.nestConfigService.get("JWT_ALGORITHM_REFRESH");
     }
 
-    public getJwtAlgorithmConfirm() {
-        return this.nestConfigService.get("JWT_ALGORITHM_CONFIRM");
-    }
-
     public getJwtAlgorithmAccess() {
         return this.nestConfigService.get("JWT_ALGORITHM_ACCESS");
     }
 
     public getJwtExpiresRefresh() {
         return this.nestConfigService.get("JWT_EXPIRES_REFRESH");
-    }
-
-    public getJwtExpiresConfirm() {
-        return this.nestConfigService.get("JWT_EXPIRES_CONFIRM");
     }
 
     public getJwtExpiresAccess() {

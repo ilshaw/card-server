@@ -2,7 +2,6 @@ import { JwtService as NestJwtService } from "@nestjs/jwt";
 import { Injectable } from "@nestjs/common";
 
 import { RefreshPayloadInterface } from "@common/interfaces/refresh-payload.interface";
-import { ConfirmPayloadInterface } from "@common/interfaces/confirm-payload.interface";
 import { AccessPayloadInterface } from "@common/interfaces/access-payload.interface";
 import { ConfigService } from "@core/services/config.service";
 
@@ -17,13 +16,6 @@ export class JwtService {
         return this.nestJwtService.signAsync(payload, { 
             algorithm: this.configService.getJwtAlgorithmRefresh(),
             expiresIn: this.configService.getJwtExpiresRefresh()
-        });
-    }
-
-    public async signConfirm(payload: ConfirmPayloadInterface) {
-        return this.nestJwtService.signAsync(payload, { 
-            algorithm: this.configService.getJwtAlgorithmConfirm(),
-            expiresIn: this.configService.getJwtExpiresConfirm()
         });
     }
 

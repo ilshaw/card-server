@@ -7,14 +7,19 @@ import { UserEntity } from "@common/entities/user.entity";
 export class SessionRepository {
     constructor(private readonly prismaService: PrismaService) {}
 
-    public async createByUserAndAccessAndRefresh(user: UserEntity, access: AccessTokenType, refresh: RefreshTokenType) {
-        return await this.prismaService.session.create({
-            data: {
-                user: {
-                    connect: user
-                },
+    public async upsertByUserAndAccessAndRefresh(user: UserEntity, access: AccessTokenType, refresh: RefreshTokenType) {
+        return await this.prismaService.session.upsert({
+            create: {
+                user_id: user.id,
                 refresh: refresh,
                 access: access
+            },
+            update: {
+                refresh: refresh,
+                access: access
+            },
+            where: {
+                user_id: user.id
             }
         });
     }
@@ -41,13 +46,10 @@ export class SessionRepository {
         });
     }
 
-    public async deleteByUserAndAccess(user: UserEntity, access: AccessTokenType) {
+    public async deleteByUser(user: UserEntity) {
         return await this.prismaService.session.delete({ 
             where: {
-                user_id_access: {
-                    user_id: user.id,
-                    access: access
-                }
+                user_id: user.id
             }
         });
     }

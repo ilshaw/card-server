@@ -17,6 +17,8 @@ export class ClientExceptionInterceptor implements NestInterceptor {
             }
         });
 
-        return next.handle().pipe(operator);
+        const observable = next.handle();
+
+        return observable.pipe(operator);
     }
 }
