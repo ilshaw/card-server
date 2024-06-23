@@ -8,15 +8,16 @@ datasource Database {
 }
 
 model User {
-    id            String   @map("id")        @default(uuid())
-	email         String   @map("email")
-    password      String   @map("password")
-	confirmed     Boolean  @map("confirmed") @default(false)
+    id           String   @map("id")        @default(uuid())
+	email        String   @map("email")
+    password     String   @map("password")
+	confirmed    Boolean  @map("confirmed") @default(false)
 
-	sessions      Session[]
+	session      Session?
+    confirmation Confirmation?
 
-    created       DateTime @map("created")   @default(now())
-    updated       DateTime @map("updated")   @default(now())  @updatedAt
+    created      DateTime @map("created")   @default(now())
+    updated      DateTime @map("updated")   @default(now())  @updatedAt
 
     @@id([id])
     @@map("users")
@@ -27,7 +28,7 @@ model Session {
 	id      String   @map("id")      @default(uuid())
 	access  String   @map("access") 
 	refresh String   @map("refresh")
-	user_id String   @map("user_id")
+    user_id String   @map("user_id")
 
 	user    User                                      @relation(fields: [user_id], references: [id])
 
@@ -36,6 +37,23 @@ model Session {
 
 	@@id([id])
     @@map("sessions")
-	@@unique([user_id, access])
-	@@unique([user_id, refresh])
+    @@unique([user_id])
+    @@unique([user_id, access])
+    @@unique([user_id, refresh])
+}
+
+model Confirmation {
+    id      String   @map("id")      @default(uuid())
+    confirm String   @map("confirm")
+    user_id String   @map("user_id")
+    
+    user    User                                      @relation(fields: [user_id], references: [id])
+
+    created DateTime @map("created") @default(now())
+    updated DateTime @map("updated") @default(now())  @updatedAt
+
+    @@id([id])
+    @@unique([user_id])
+    @@map("confirmations")
+    @@unique([user_id, confirm])
 }
