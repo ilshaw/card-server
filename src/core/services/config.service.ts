@@ -29,26 +29,6 @@ export class ConfigService {
         return this.nestConfigService.get("JWT_EXPIRES_ACCESS");
     }
 
-    public getNodemailerSecure() {
-        return this.nestConfigService.get("NODEMAILER_SECURE");
-    }
-
-    public getNodemailerHost() {
-        return this.nestConfigService.get("NODEMAILER_HOST");
-    }
-
-    public getNodemailerPort() {
-        return this.nestConfigService.get("NODEMAILER_PORT");
-    }
-
-    public getNodemailerUser() {
-        return this.nestConfigService.get("NODEMAILER_USER");
-    }
-
-    public getNodemailerPass() {
-        return this.nestConfigService.get("NODEMAILER_PASS");
-    }
-
     public getMinioSecret() {
         return this.nestConfigService.get("MINIO_SECRET");
     }
