@@ -14,7 +14,6 @@ model User {
 	confirmed     Boolean  @map("confirmed") @default(false)
 
 	sessions      Session[]
-    confirmations Confirmation[]
 
     created       DateTime @map("created")   @default(now())
     updated       DateTime @map("updated")   @default(now())  @updatedAt
@@ -39,19 +38,4 @@ model Session {
     @@map("sessions")
 	@@unique([user_id, access])
 	@@unique([user_id, refresh])
-}
-
-model Confirmation {
-    id      String   @map("id")      @default(uuid())
-    confirm String   @map("confirm")
-    user_id String   @map("user_id")
-    
-    user    User                                      @relation(fields: [user_id], references: [id])
-
-    created DateTime @map("created") @default(now())
-    updated DateTime @map("updated") @default(now())  @updatedAt
-
-    @@id([id])
-    @@map("confirmations")
-    @@unique([user_id, confirm])
 }
