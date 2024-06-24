@@ -29,22 +29,6 @@ export class ConfigService {
         return this.nestConfigService.get("JWT_EXPIRES_ACCESS");
     }
 
-    public getMinioSecret() {
-        return this.nestConfigService.get("MINIO_SECRET");
-    }
-
-    public getMinioAccess() {
-        return this.nestConfigService.get("MINIO_ACCESS");
-    }
-
-    public getMinioHost() {
-        return this.nestConfigService.get("MINIO_HOST");
-    }
-
-    public getMinioPort() {
-        return this.nestConfigService.get("MINIO_PORT");
-    }
-
     public getRedisPort() {
         return this.nestConfigService.get("REDIS_PORT");
     }
@@ -55,10 +39,6 @@ export class ConfigService {
 
     public getRedisPass() {
         return this.nestConfigService.get("REDIS_PASS");
-    }
-
-    public getMinioSsl() {
-        return this.nestConfigService.get("MINIO_SSL");
     }
 
     public getAppPort() {
