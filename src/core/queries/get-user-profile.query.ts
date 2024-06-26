@@ -10,7 +10,7 @@ export class GetUserProfileHandler {
     constructor(private readonly responseService: ResponseService) {}
 
     public async execute(query: GetUserProfileQuery) {
-        return this.responseService.okResponse("Information about user profile", {
+        return this.responseService.okResponse("", {
             user: lodash.omit(query.request.user, "password")
         });
     }
