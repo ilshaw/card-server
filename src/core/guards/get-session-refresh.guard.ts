@@ -7,7 +7,7 @@ import { ExceptionService } from "@core/services/exception.service";
 import { UserEntity } from "@common/entities/user.entity";
 
 @Injectable()
-export class GetTokenRefreshGuard extends AuthGuard("get-token-refresh") implements CanActivate {
+export class GetSessionRefreshGuard extends AuthGuard("get-session-refresh") implements CanActivate {
     constructor(private readonly exceptionService: ExceptionService) {
         super();
     }

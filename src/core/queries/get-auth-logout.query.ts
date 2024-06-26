@@ -17,7 +17,7 @@ export class GetAuthLogoutHandler {
         this.cookieService.clearRefresh(query.response);
         this.cookieService.clearAccess(query.response);
 
-        await this.eventBus.publish(new SessionDeletedEvent(query.request.user));
+        await this.eventBus.publish(new SessionDeletedEvent(query.request.user, query.request.cookies.access));
 
         return this.responseService.okResponse("User has successfully logged out");
     }

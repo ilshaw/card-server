@@ -17,6 +17,6 @@ export class SessionProcessor {
 
     @Process("deleted")
     public async processDeleted(job: Job<SessionDeletedJob>) {
-        return await this.sessionRepository.deleteByUser(job.data.user);
+        return await this.sessionRepository.deleteByUserAndAccess(job.data.user, job.data.access);
     }
 }

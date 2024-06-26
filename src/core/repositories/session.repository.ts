@@ -46,10 +46,13 @@ export class SessionRepository {
         });
     }
 
-    public async deleteByUser(user: UserEntity) {
+    public async deleteByUserAndAccess(user: UserEntity, access: AccessTokenType) {
         return await this.prismaService.session.delete({ 
             where: {
-                user_id: user.id
+                user_id_access: {
+                    user_id: user.id,
+                    access: access
+                }
             }
         });
     }

@@ -12,7 +12,7 @@ import { UserRequest } from "@common/interfaces/user-request.interface";
 export class UserController {
     constructor(private readonly queryBus: QueryBus) {}
 
-    @ApiOkResponse({ description: "Information about user profile" })
+    @ApiOkResponse({ description: "" })
     @ApiSecurity("access")
     @UseGuards(GetUserProfileGuard)
     @HttpCode(ResponseStatusEnum.OK)

@@ -11,7 +11,7 @@ import { UserRepository } from "@core/repositories/user.repository";
 import { KeyService } from "@core/services/key.service";
 
 @Injectable()
-export class GetTokenRefreshStrategy extends PassportStrategy(Strategy, "get-token-refresh") {
+export class GetSessionRefreshStrategy extends PassportStrategy(Strategy, "get-session-refresh") {
     constructor(
         private readonly sessionRepository: SessionRepository,
         private readonly exceptionService: ExceptionService, 
