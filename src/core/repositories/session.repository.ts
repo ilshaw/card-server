@@ -10,13 +10,29 @@ export class SessionRepository {
     public async upsertByUserAndAccessAndRefresh(user: UserEntity, access: AccessTokenType, refresh: RefreshTokenType) {
         return await this.prismaService.session.upsert({
             create: {
-                user_id: user.id,
-                refresh: refresh,
-                access: access
+                refresh: {
+                    create: {
+                        token: refresh
+                    }
+                },
+                access: {
+                    create: {
+                        token: access
+                    }
+                },
+                user_id: user.id
             },
             update: {
-                refresh: refresh,
-                access: access
+                refresh: {
+                    update: {
+                        token: refresh
+                    }
+                },
+                access: {
+                    update: {
+                        token: access
+                    }
+                }
             },
             where: {
                 user_id: user.id
@@ -27,10 +43,10 @@ export class SessionRepository {
     public async findUniqueByUserAndRefresh(user: UserEntity, refresh: RefreshTokenType) {
         return await this.prismaService.session.findUnique({
             where: {
-                user_id_refresh: {
-                    user_id: user.id,
-                    refresh: refresh
-                }
+                refresh: {
+                    token: refresh
+                },
+                user_id: user.id
             }
         });
     }
@@ -38,10 +54,10 @@ export class SessionRepository {
     public async findUniqueByUserAndAccess(user: UserEntity, access: AccessTokenType) {
         return await this.prismaService.session.findUnique({ 
             where: {
-                user_id_access: {
-                    user_id: user.id,
-                    access: access
-                }
+                access: {
+                    token: access
+                },
+                user_id: user.id
             }
         });
     }
@@ -49,10 +65,10 @@ export class SessionRepository {
     public async deleteByUserAndAccess(user: UserEntity, access: AccessTokenType) {
         return await this.prismaService.session.delete({ 
             where: {
-                user_id_access: {
-                    user_id: user.id,
-                    access: access
-                }
+                access: {
+                    token: access
+                },
+                user_id: user.id
             }
         });
     }

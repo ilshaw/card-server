@@ -30,15 +30,4 @@ export class UserRepository {
             }
         });
     }
-
-    public async resetById(id: string, password: string) {
-        return await this.prismaService.user.update({
-            data: {
-                password: password
-            },
-            where: {
-                id: id
-            }
-        });
-    }
 }

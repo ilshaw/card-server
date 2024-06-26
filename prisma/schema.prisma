@@ -8,34 +8,77 @@ datasource Database {
 }
 
 model User {
-    id           String   @map("id")        @default(uuid())
-	email        String   @map("email")
-    password     String   @map("password")
+    id       String   @map("id")       @default(uuid())
+	email    String   @map("email")
+    password String   @map("password")
 
-	session      Session?
+    card     Card?
+	session  Session?
 
-    created      DateTime @map("created")   @default(now())
-    updated      DateTime @map("updated")   @default(now())  @updatedAt
+    created  DateTime @map("created")  @default(now())
+    updated  DateTime @map("updated")  @default(now())  @updatedAt
 
     @@id([id])
-    @@map("users")
+    @@map("user")
 	@@unique([email])
 }
 
 model Session {
-	id      String   @map("id")      @default(uuid())
-	access  String   @map("access") 
-	refresh String   @map("refresh")
+	id      String   @map("id")         @default(uuid())
     user_id String   @map("user_id")
 
-	user    User                                      @relation(fields: [user_id], references: [id])
+	user    User                                         @relation(fields: [user_id], references: [id])
+    access  Access?
+    refresh Refresh?
 
-	created DateTime @map("created") @default(now())
-    updated DateTime @map("updated") @default(now())  @updatedAt
+	created DateTime @map("created")    @default(now())
+    updated DateTime @map("updated")    @default(now())  @updatedAt
 
 	@@id([id])
-    @@map("sessions")
+    @@map("session")
     @@unique([user_id])
-    @@unique([user_id, access])
-    @@unique([user_id, refresh])
+}
+
+model Access {
+    id         String   @map("id")         @default(uuid())
+    token      String   @map("token")
+    session_id String   @map("session_id")
+
+    session    Session                                      @relation(fields: [session_id], references: [id])
+
+    created    DateTime @map("created")    @default(now())
+    updated    DateTime @map("updated")    @default(now())  @updatedAt
+
+    @@id([id])
+    @@map("access")
+    @@unique([session_id])
+}
+
+model Refresh {
+    id         String   @map("id")         @default(uuid())
+    token      String   @map("token")
+    session_id String   @map("session_id")
+
+    session    Session                                      @relation(fields: [session_id], references: [id])
+
+    created    DateTime @map("created")    @default(now())
+    updated    DateTime @map("updated")    @default(now())  @updatedAt
+
+    @@id([id])
+    @@map("refresh")
+    @@unique([session_id])
+}
+
+model Card {
+    id      String   @map("id")      @default(uuid())
+    user_id String   @map("user_id")
+
+    user    User                                      @relation(fields: [user_id], references: [id])
+
+    created DateTime @map("created") @default(now())
+    updated DateTime @map("updated") @default(now())  @updatedAt
+
+    @@id([id])
+    @@map("card")
+    @@unique([user_id])
 }
