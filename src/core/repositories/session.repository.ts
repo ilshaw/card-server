@@ -77,4 +77,12 @@ export class SessionRepository {
             }
         });
     }
+
+    public async findUniqueByUser(user: UserEntity) {
+        return await this.prismaService.session.findUnique({ 
+            where: {
+                user_id: user.id
+            }
+        });
+    }
 }

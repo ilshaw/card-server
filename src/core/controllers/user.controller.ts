@@ -3,7 +3,9 @@ import { ApiTags, ApiSecurity, ApiOkResponse } from "@nestjs/swagger";
 import { QueryBus } from "@nestjs/cqrs";
 
 import { GetUserProfileQuery } from "@common/queries/get-user-profile.query";
+import { GetUserSessionQuery } from "@common/queries/get-user-session.query";
 import { GetUserProfileGuard } from "@core/guards/get-user-profile.guard";
+import { GetUserSessionGuard } from "@core/guards/get-user-session.guard";
 import { ResponseStatusEnum } from "@common/enums/response-status.enum";
 import { UserRequest } from "@common/interfaces/user-request.interface";
 import { GetUserCardQuery } from "@common/queries/get-user-card.query";
@@ -13,6 +15,15 @@ import { GetUserCardGuard } from "@core/guards/get-user-card.guard";
 @Controller("/user")
 export class UserController {
     constructor(private readonly queryBus: QueryBus) {}
+
+    @ApiOkResponse({ description: "" })
+    @ApiSecurity("access")
+    @UseGuards(GetUserSessionGuard)
+    @HttpCode(ResponseStatusEnum.OK)
+    @Get("/session")
+    public async getUserSession(@Request() request: UserRequest) {
+        return await this.queryBus.execute(new GetUserSessionQuery(request));
+    }
 
     @ApiOkResponse({ description: "" })
     @ApiSecurity("access")

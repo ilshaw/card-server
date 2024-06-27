@@ -4,6 +4,7 @@ import { GetSessionRefreshStrategy } from "@core/strategies/get-session-refresh.
 import { PostAuthSignupStrategy } from "@core/strategies/post-auth-signup.strategy";
 import { PostCardCreateStrategy } from "@core/strategies/post-card-create.strategy";
 import { GetUserProfileStrategy } from "@core/strategies/get-user-profile.strategy";
+import { GetUserSessionStrategy } from "@core/strategies/get-user-session.strategy";
 import { PostAuthLoginStrategy } from "@core/strategies/post-auth-login.strategy";
 import { GetAuthLogoutStrategy } from "@core/strategies/get-auth-logout.strategy";
 import { GetUserCardStrategy } from "@core/strategies/get-user-card.strategy";
@@ -15,6 +16,7 @@ import { GetUserCardStrategy } from "@core/strategies/get-user-card.strategy";
         PostAuthSignupStrategy,
         PostCardCreateStrategy,
         GetUserProfileStrategy,
+        GetUserSessionStrategy,
         PostAuthLoginStrategy,
         GetAuthLogoutStrategy,
         GetUserCardStrategy
@@ -24,6 +26,7 @@ import { GetUserCardStrategy } from "@core/strategies/get-user-card.strategy";
         PostAuthSignupStrategy,
         PostCardCreateStrategy,
         GetUserProfileStrategy,
+        GetUserSessionStrategy,
         PostAuthLoginStrategy,
         GetAuthLogoutStrategy,
         GetUserCardStrategy

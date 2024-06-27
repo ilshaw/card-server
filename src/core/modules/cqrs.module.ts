@@ -5,6 +5,7 @@ import { GetSessionRefreshHandler } from "@core/queries/get-session-refresh.hand
 import { PostAuthSignupHandler } from "@core/commands/post-auth-signup.handler";
 import { PostCardCreateHandler } from "@core/commands/post-card-create.handler";
 import { GetUserProfileHandler } from "@core/queries/get-user-profile.handler";
+import { GetUserSessionHandler } from "@core/queries/get-user-session.handler";
 import { PostAuthLoginHandler } from "@core/commands/post-auth-login.handler";
 import { SessionCreatedHandler } from "@core/events/session-created.handler";
 import { SessionDeletedHandler } from "@core/events/session-deleted.handler";
@@ -23,6 +24,7 @@ import { GetUserCardHandler } from "@core/queries/get-user-card.handler";
         PostAuthSignupHandler,
         PostCardCreateHandler,
         GetUserProfileHandler,
+        GetUserSessionHandler,
         PostAuthLoginHandler,
         GetAuthLogoutHandler,
         GetUserCardHandler

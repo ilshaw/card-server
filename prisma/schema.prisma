@@ -27,7 +27,7 @@ model Session {
 	id      String   @map("id")         @default(uuid())
     user_id String   @map("user_id")
 
-	user    User                                         @relation(fields: [user_id], references: [id])
+	user    User                                         @relation(fields: [user_id], references: [id], onDelete: Cascade)
     access  Access?
     refresh Refresh?
 
@@ -44,7 +44,7 @@ model Access {
     token      String   @map("token")
     session_id String   @map("session_id")
 
-    session    Session                                      @relation(fields: [session_id], references: [id])
+    session    Session                                      @relation(fields: [session_id], references: [id], onDelete: Cascade)
 
     created    DateTime @map("created")    @default(now())
     updated    DateTime @map("updated")    @default(now())  @updatedAt
@@ -60,7 +60,7 @@ model Refresh {
     token      String   @map("token")
     session_id String   @map("session_id")
 
-    session    Session                                      @relation(fields: [session_id], references: [id])
+    session    Session                                      @relation(fields: [session_id], references: [id], onDelete: Cascade)
 
     created    DateTime @map("created")    @default(now())
     updated    DateTime @map("updated")    @default(now())  @updatedAt
@@ -76,7 +76,7 @@ model Card {
     user_id     String   @map("user_id")
     description String   @map("description")
 
-    user        User                                          @relation(fields: [user_id], references: [id])
+    user        User                                          @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
     links       Link[]
 
@@ -94,7 +94,7 @@ model Link {
     type    String   @map("type")    
     card_id String   @map("card_id")
 
-    card    Card                                      @relation(fields: [card_id], references: [id])
+    card    Card                                      @relation(fields: [card_id], references: [id], onDelete: Cascade)
 
     created DateTime @map("created") @default(now())
     updated DateTime @map("updated") @default(now())  @updatedAt
