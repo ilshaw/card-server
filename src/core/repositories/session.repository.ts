@@ -10,6 +10,9 @@ export class SessionRepository {
     public async upsertByUserAndAccessAndRefresh(user: UserEntity, access: AccessTokenType, refresh: RefreshTokenType) {
         return await this.prismaService.session.upsert({
             create: {
+                user: {
+                    connect: user
+                },
                 refresh: {
                     create: {
                         token: refresh
@@ -19,10 +22,12 @@ export class SessionRepository {
                     create: {
                         token: access
                     }
-                },
-                user_id: user.id
+                }
             },
             update: {
+                user: {
+                    connect: user
+                },
                 refresh: {
                     update: {
                         token: refresh

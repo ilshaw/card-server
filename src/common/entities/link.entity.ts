@@ -1,0 +1,1 @@
+export { Link as LinkEntity } from "@prisma/client";

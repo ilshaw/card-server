@@ -19,6 +19,7 @@ import { BullModule } from "@core/modules/bull.module";
 import { CqrsModule } from "@core/modules/cqrs.module";
 import { PinoModule } from "@core/modules/pino.module";
 import { UserModule } from "@core/modules/user.module";
+import { CardModule } from "@core/modules/card.module";
 import { JwtModule } from "@core/modules/jwt.module";
 import { KeyModule } from "@core/modules/key.module";
 
@@ -38,6 +39,7 @@ import { KeyModule } from "@core/modules/key.module";
         CqrsModule,
         PinoModule,
         UserModule,
+        CardModule,
         JwtModule,
         KeyModule
     ],

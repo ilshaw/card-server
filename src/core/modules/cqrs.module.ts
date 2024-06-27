@@ -3,6 +3,7 @@ import { Global, Module } from "@nestjs/common";
 
 import { GetSessionRefreshHandler } from "@core/queries/get-session-refresh.query";
 import { PostAuthSignupHandler } from "@core/commands/post-auth-signup.handler";
+import { PostCardCreateHandler } from "@core/commands/post-card-create.handler";
 import { PostAuthLoginHandler } from "@core/commands/post-auth-login.handler";
 import { SessionCreatedHandler } from "@core/events/session-created.handler";
 import { SessionDeletedHandler } from "@core/events/session-deleted.handler";
@@ -19,6 +20,7 @@ import { GetAuthLogoutHandler } from "@core/queries/get-auth-logout.query";
         SessionCreatedHandler,
         SessionDeletedHandler,
         PostAuthSignupHandler,
+        PostCardCreateHandler,
         GetUserProfileHandler,
         PostAuthLoginHandler,
         GetAuthLogoutHandler

@@ -52,6 +52,7 @@ model Access {
     @@id([id])
     @@map("access")
     @@unique([session_id])
+    @@unique([session_id, token])
 }
 
 model Refresh {
@@ -67,18 +68,38 @@ model Refresh {
     @@id([id])
     @@map("refresh")
     @@unique([session_id])
+    @@unique([session_id, token])
 }
 
 model Card {
-    id      String   @map("id")      @default(uuid())
-    user_id String   @map("user_id")
+    id          String   @map("id")          @default(uuid())
+    user_id     String   @map("user_id")
+    description String   @map("description")
 
-    user    User                                      @relation(fields: [user_id], references: [id])
+    user        User                                          @relation(fields: [user_id], references: [id])
+
+    links       Link[]
+
+    created     DateTime @map("created")     @default(now())
+    updated     DateTime @map("updated")     @default(now())  @updatedAt
+
+    @@id([id])
+    @@map("card")
+    @@unique([user_id])
+}
+
+model Link {
+    id      String   @map("id")      @default(uuid())
+    url     String   @map("url")
+    type    String   @map("type")    
+    card_id String   @map("card_id")
+
+    card    Card                                      @relation(fields: [card_id], references: [id])
 
     created DateTime @map("created") @default(now())
     updated DateTime @map("updated") @default(now())  @updatedAt
 
     @@id([id])
-    @@map("card")
-    @@unique([user_id])
+    @@map("link")
+    @@unique([card_id, url, type])
 }
