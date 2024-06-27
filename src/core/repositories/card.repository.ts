@@ -18,11 +18,22 @@ export class CardRepository {
         });
     }
 
+    public async findUniqueByUserWithLinks(user: UserEntity) {
+        return await this.prismaService.card.findUnique({
+            include: {
+                links: true
+            },
+            where: {
+                user_id: user.id
+            }
+        });
+    }
+
     public async findUniqueByUser(user: UserEntity) {
         return await this.prismaService.card.findUnique({
             where: {
                 user_id: user.id
             }
-        })
+        });
     }
 }

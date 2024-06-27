@@ -1,14 +1,15 @@
 import { CqrsModule as NestCqrsModule } from "@nestjs/cqrs";
 import { Global, Module } from "@nestjs/common";
 
-import { GetSessionRefreshHandler } from "@core/queries/get-session-refresh.query";
+import { GetSessionRefreshHandler } from "@core/queries/get-session-refresh.handler";
 import { PostAuthSignupHandler } from "@core/commands/post-auth-signup.handler";
 import { PostCardCreateHandler } from "@core/commands/post-card-create.handler";
+import { GetUserProfileHandler } from "@core/queries/get-user-profile.handler";
 import { PostAuthLoginHandler } from "@core/commands/post-auth-login.handler";
 import { SessionCreatedHandler } from "@core/events/session-created.handler";
 import { SessionDeletedHandler } from "@core/events/session-deleted.handler";
-import { GetUserProfileHandler } from "@core/queries/get-user-profile.query";
-import { GetAuthLogoutHandler } from "@core/queries/get-auth-logout.query";
+import { GetAuthLogoutHandler } from "@core/queries/get-auth-logout.handler";
+import { GetUserCardHandler } from "@core/queries/get-user-card.handler";
 
 @Global()
 @Module({
@@ -23,7 +24,8 @@ import { GetAuthLogoutHandler } from "@core/queries/get-auth-logout.query";
         PostCardCreateHandler,
         GetUserProfileHandler,
         PostAuthLoginHandler,
-        GetAuthLogoutHandler
+        GetAuthLogoutHandler,
+        GetUserCardHandler
     ]
 })
 export class CqrsModule {}

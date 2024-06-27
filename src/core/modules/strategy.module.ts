@@ -6,6 +6,7 @@ import { PostCardCreateStrategy } from "@core/strategies/post-card-create.strate
 import { GetUserProfileStrategy } from "@core/strategies/get-user-profile.strategy";
 import { PostAuthLoginStrategy } from "@core/strategies/post-auth-login.strategy";
 import { GetAuthLogoutStrategy } from "@core/strategies/get-auth-logout.strategy";
+import { GetUserCardStrategy } from "@core/strategies/get-user-card.strategy";
 
 @Global()
 @Module({
@@ -15,7 +16,8 @@ import { GetAuthLogoutStrategy } from "@core/strategies/get-auth-logout.strategy
         PostCardCreateStrategy,
         GetUserProfileStrategy,
         PostAuthLoginStrategy,
-        GetAuthLogoutStrategy
+        GetAuthLogoutStrategy,
+        GetUserCardStrategy
     ],
     exports: [
         GetSessionRefreshStrategy,
@@ -23,7 +25,8 @@ import { GetAuthLogoutStrategy } from "@core/strategies/get-auth-logout.strategy
         PostCardCreateStrategy,
         GetUserProfileStrategy,
         PostAuthLoginStrategy,
-        GetAuthLogoutStrategy
+        GetAuthLogoutStrategy,
+        GetUserCardStrategy
     ]
 })
 export class StrategyModule {}

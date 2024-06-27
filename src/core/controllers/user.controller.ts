@@ -6,6 +6,8 @@ import { GetUserProfileQuery } from "@common/queries/get-user-profile.query";
 import { GetUserProfileGuard } from "@core/guards/get-user-profile.guard";
 import { ResponseStatusEnum } from "@common/enums/response-status.enum";
 import { UserRequest } from "@common/interfaces/user-request.interface";
+import { GetUserCardQuery } from "@common/queries/get-user-card.query";
+import { GetUserCardGuard } from "@core/guards/get-user-card.guard";
 
 @ApiTags("User")
 @Controller("/user")
@@ -19,5 +21,14 @@ export class UserController {
     @Get("/profile")
     public async getUserProfile(@Request() request: UserRequest) {
         return await this.queryBus.execute(new GetUserProfileQuery(request));
+    }
+
+    @ApiOkResponse({ description: "" })
+    @ApiSecurity("access")
+    @UseGuards(GetUserCardGuard)
+    @HttpCode(ResponseStatusEnum.OK)
+    @Get("/card")
+    public async getUserCard(@Request() request: UserRequest) {
+        return await this.queryBus.execute(new GetUserCardQuery(request));
     }
 }
