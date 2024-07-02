@@ -17,7 +17,7 @@ export class CardController {
     @ApiSecurity("access")
     @ApiBody({ type: PostCardCreateBodyDto, required: true, description: "Post card create body" })
     @UseGuards(PostCardCreateGuard)
-    @HttpCode(ResponseStatusEnum.OK)
+    @HttpCode(ResponseStatusEnum.CREATED)
     @Post("/create")
     public async postCardCreate(@Request() request: UserRequest<{ Body: PostCardCreateBodyDto }>) {
         return await this.commandBus.execute(new PostCardCreateCommand(request));
