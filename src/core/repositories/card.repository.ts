@@ -36,4 +36,12 @@ export class CardRepository {
             }
         });
     }
+
+    public async findMany() {
+        return await this.prismaService.card.findMany({
+            include: {
+                links: true
+            }
+        })
+    }
 }

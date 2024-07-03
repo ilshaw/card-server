@@ -30,4 +30,8 @@ export class UserRepository {
             }
         });
     }
+
+    public async findMany() {
+        return await this.prismaService.user.findMany();
+    }
 }
