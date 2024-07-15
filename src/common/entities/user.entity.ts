@@ -1,0 +1,1 @@
+export { User as UserEntity } from "@prisma/client";

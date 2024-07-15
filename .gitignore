@@ -5,3 +5,9 @@ node_modules/*
 dist/**/*
 dist/**
 dist/*
+
+keys/**/*
+keys/**
+keys/*
+
+.env

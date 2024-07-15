@@ -1,0 +1,1 @@
+export { Card as CardEntity } from "@prisma/client";
